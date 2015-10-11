@@ -2,7 +2,7 @@
   "engines": {
     "node": "0.12.x"
   },
-  "name": "annam-web-app",
+  "name": "maple-cdn",
   "private": true,
   "version": "0.1.0",
   "description": "",
@@ -19,6 +19,9 @@
     "harp": "*"
   },
   "devDependencies_old": {
+  },
+  "scripts": {
+    "install": "bower update && ./node_modules/grunt-cli/bin/grunt build"
   },
   "jsbeautifier": {
     "html": {
