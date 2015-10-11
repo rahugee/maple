@@ -63,7 +63,7 @@ module.exports = function (grunt) {
       options: {
         indexBundles: ["webmodules/bootloader", "maple/web2"],// ["project/app"],
         src: "./",
-        dest: "build/dist",
+        dest: "dist",
         resourcesFile: "resource.json",
         livereloadUrl: "http://localhost:8081/livereload.js",
         bootServer: {
@@ -100,20 +100,21 @@ module.exports = function (grunt) {
         options: {
           src: 'src',
           dest: '/src',
-          memory: './build/root/memory.src.json'
+          memory: './dist/root/memory.src.json'
         }
       },
       dist: {
         options: {
-          src: 'build',
-          dest: '/build',
-          memory: './build/root/memory.dist.json'
+          src: 'dist',
+          dest: '/dist',
+          memory: './dist/root/memory.dist.json'
         }
       },
       root: {
         options: {
-          src: 'build/root',
-          dest: '/'
+          src: 'dist/root',
+          dest: '/',
+          memory: './dist/root/memory.root.json'
         }
       }
     }
@@ -142,8 +143,8 @@ module.exports = function (grunt) {
   grunt.registerTask('deploy', ["build", 'ftp-diff-deployer:dist','ftp-diff-deployer:src','deployroot']);
 
   grunt.registerTask('prepareroot', function(){
-    grunt.file.copy("./.htaccess", "./build/dist/root/.htaccess");
-    grunt.file.copy("./web.config", "./build/dist/root/web.config");
+    grunt.file.copy("./.htaccess", "./dist/root/.htaccess");
+    grunt.file.copy("./web.config", "./dist/root/web.config");
   });
 
 };

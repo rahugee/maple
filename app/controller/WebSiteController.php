@@ -41,7 +41,7 @@ namespace app\controller {
                 $this->user->auth(null, null);
             }
             $model->assign("context_path", Webapp::$BASE_URL);
-            $model->assign("cdn_server", "" . Webapp::$BASE_URL . "/");
+            $model->assign("cdn_server", \Config::get("CDN_SERVER").Webapp::$BASE_URL . "/");
             return "index";
         }
 
