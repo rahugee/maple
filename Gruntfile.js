@@ -87,11 +87,11 @@ module.exports = function (grunt) {
     },
     'ftp-diff-deployer': {
       options: {
-        host: '182.50.132.48',
+        host: 'SERVER_IP',
         port: 21,
         auth: {
-          username: 'cdn.hotiff.in',
-          password: 'xgE00c^9'
+          username: 'USER_NAME',
+          password: 'USER_PASS'
         },
         diff: 'simple',
         exclude: ['/.idea','/.idea/**/*', '/.git/**/*','/**/.git/**', '/**/*.scss', '/node_modules/**/*','/node_modules']

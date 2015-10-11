@@ -14,7 +14,8 @@
     "grunt-contrib-connect": "0.3.0",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-ftp-diff-deployer": "^0.2.0"
+    "grunt-ftp-diff-deployer": "^0.2.0",
+    "harp": "*"
   },
   "devDependencies_old": {
   },
