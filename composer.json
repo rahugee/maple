@@ -8,7 +8,7 @@
 		"rudrax/boot" : "dev-master"
     },
     
-    "require-dev": {
+    "require-dev-no": {
 		"codegyre/robo": "*"
 	},
 	"scripts_no": {
