@@ -1,0 +1,11 @@
+@import "external/bootstrap/css/bootstrap.min.css";
+@import "external/bootswatch/assets/css/bootswatch.min.css";
+
+@import "external/components/spamjs-navbar/boot.navbar.css";
+@import "tags/profile.css";
+@import "web2files/searchbar/searchbar.css";
+
+body {
+    min-height: 2000px;
+    padding-top: 70px;
+}

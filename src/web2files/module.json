@@ -1,0 +1,34 @@
+{
+  "name": "maple",
+  "maple/web2": {
+    "extra": [
+      "page/view.story.js"
+    ],
+    "js": [
+      "maple.app.js"
+    ],
+    "on": ["maple/webmodules", "maple/spamjs", "maple/home"]
+  },
+  "maple/home": {
+    "js": [
+      "webinfo/maple.statbox.js",
+      "searchbar/maple.searchbar.js",
+      "storieslist/maple.storieslist.js",
+      "home/maple.home.js",
+      "story/maple.story.js"
+    ],
+    "on": ["maple/webmodules",  "maple/spamjs",  "maple/service" ]
+  },
+  "maple/style": {
+    "css": [
+      "../maple.css"
+    ]
+  },
+  "maple/service": {
+    "js": [
+      "service/DataService.js",
+      "maple.webinfo.js"
+    ],
+    "on": [  "jsutils/cache" ]
+  }
+}

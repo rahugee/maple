@@ -1,0 +1,26 @@
+{
+    "config": {
+        "vendor-dir": "lib"
+    },
+    "minimum-stability": "dev",
+    
+    "require": {
+		"rudrax/boot" : "dev-master"
+    },
+    
+    "require-dev": {
+		"codegyre/robo": "*"
+	},
+	"scripts_no": {
+		"post-update-cmd": [
+      		"RudraX\\Project::setup",
+      		"php robo bundlify"
+    	]
+	},
+	"autoload": {
+	  "psr-4": {
+		"Maple\\": "app/",
+		"app\\model\\": "app/model/"
+	  }
+	}
+}

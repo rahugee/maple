@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">
+
+			<ul class="list-group">
+				<li class="list-group-item profile_image_container"><a href=""
+					class="center-block profile_image_link"><img
+						title="profile image" class="img-circle img-responsive"
+						src="{{CONTEXT_PATH}}{{DP_PATH}}/default.png"> </a>
+					<h2 class="profile_name text-center">{{data.details.penname}}</h2>
+				</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong>
+				</span> <time class="timeago" datetime="{{data.details.date}}">&nbsp;{{data.details.date}}</time></li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Last
+							seen</strong> </span> <time class="timeago" datetime="{{data.details.login}}">{{data.details.login}}</time>
+				</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Real
+							name</strong> </span> {{data.details.realname || data.details.penname}}</li>
+			</ul>
+
+			<ul class="list-group panel-default">
+				<li class="list-group-item text-muted panel-heading">Activity <i
+					class="fa fa-dashboard fa-1x"></i>
+				</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong>
+				</span> 125</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong>
+				</span> 13</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong>
+				</span> 37</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong>
+				</span> 78</li>
+			</ul>
+
+		</div>
+		<!--/col-3-->
+
+		<div class="col-sm-9">
+			<div class="read_section"></div>
+
+			<!--/tab-content-->
+		</div>
+		<!--/col-9-->
+	</div>
+	<!--/row-->
+</div>

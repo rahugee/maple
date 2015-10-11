@@ -1,0 +1,32 @@
+{
+  "name": "maple",
+  "description": "",
+  "version": "0.1.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "webmodules-underscore": "~1.8.31",
+    "webmodules-foo": ">=3.1.2",
+    "webmodules-bootstrap": "latest",
+    "webmodules-bootloader": ">=0.1.2",
+    "webmodules-jqrouter": ">=1.0.8",
+    "webmodules-jqbus": "0.0.5",
+    "jsutils-file": ">=0.0.8",
+    "spamjs-view": ">=0.0.7",
+    "spamjs-bootconfig": "latest",
+    "jqtags-jq-tab": "latest",
+    "jqtags-jq-select": "latest",
+    "jqtags-jq-date": "latest",
+    "jqtags-jq-select2": "latest",
+    "jqtags-jq-time": "latest",
+    "bootstrap-star-rating": "latest",
+    "typeahead.js": "latest",
+    "bootstrap-social": "latest",
+    "spamjs-navbar": "~1.0.4"
+  },
+  "resolutions": {
+    "jsutils-file": "~0.0.8",
+    "webmodules-jqtag": "0.0.6"
+  }
+}

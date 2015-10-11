@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">
+			<ul class="list-group">
+				<li class="list-group-item profile_image_container"><a jqrouter
+					href="/story/{{data.info.sid}}#/info"
+					class="center-block profile_image_link"><img
+						title="profile image" class="img-responsive"
+						src="{{CONTEXT_PATH}}{{COVER_PATH}}/cover0.jpeg"> </a></li>
+				<li class="list-group-item text-right"><span class=""><strong>{{data.info.title}}</strong>
+				</span><br /> <span class="pull">by <a
+						href="{{CONTEXT_PATH}}user/{{data.info.uid}}/{{data.info.penname}}"><strong>{{data.info.penname}}</strong></span></a><br />
+					<span class="pull"> <!-- if(data.info.coauthors && data.coauthors){ for(var i in data.coauthors){ -->
+						<a href="{{CONTEXT_PATH}}user/{{i}}/{{data.coauthors[i]}}">{{data.coauthors[i]}}</a>,
+						<!-- }} -->
+				</span></li>
+			</ul>
+			<ul class="list-group panel-default">
+				<li class="list-group-item text-muted panel-heading">Stats</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Rating</strong>
+				</span>{{data.stats.rating}}</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Comments</strong>
+				</span> {{data.stats.reviews}}</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Reads</strong>
+				</span> {{data.stats.count}}</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Favorites</strong>
+				</span> {{data.stats.favs}}</li>
+				<li class="list-group-item text-right"><span class="pull-left"><strong>Share</strong>
+				</span></li>
+			</ul>
+		</div>
+		<!--/col-3-->
+
+		<div class="col-sm-9">
+			<div class="read_section"></div>
+
+			<!--/tab-content-->
+		</div>
+		<!--/col-9-->
+	</div>
+	<!--/row-->
+</div>

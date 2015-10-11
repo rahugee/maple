@@ -1,0 +1,65 @@
+/.nb-gradle/profiles/private/
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.pyc
+*.so
+*.pdb
+*.suo
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+/config
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+/src/external/components
+*.rar
+*.tar
+*.zip
+/node_modules
+/src/external/bootswatch/bower_components
+/build
+
+# Eclipse #
+###########
+.metadata
+.settings
+.project
+.classpath
+.idea
+
+# Folders #
+###########
+.gradle
+bin
+target
+test-output
+Servers
+obj
+
+# minification files #
+######################
+#*min.css
+#*-min.js
+
+# Other Files #
+###############
+lib/*
+lib
+/src/external/bootswatch/2/bower_components
+/static
+dump
+*~
+
+robo
+build
+lib

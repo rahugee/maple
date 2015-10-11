@@ -1,0 +1,37 @@
+
+<div class="list-group panel-default">
+	<ol class="breadcrumb list-group-item">
+		<li><a jqrouter href="#/stories">Stories</a></li>
+		<li class="active">{{data.info.title}}</li>
+	</ol>
+	<div class="list-group-item panel-body story-stats maple-details">
+		<span class="fa fa-star fa-lg" title="Rating">&nbsp;{{data.stats.rating}}</span>
+		<span class="fa fa-heart fa-lg" title="Add Favorite">&nbsp;{{data.stats.favs}}</span>
+		<span class="fa fa-share-square fa-lg" title="Share">&nbsp;{{data.stats.shares}}</span>
+		<span class="fa fa-comments fa-lg" title="Comments">
+			&nbsp;{{data.stats.reviews}}</span> <span class="fa fa-book fa-lg"
+			title="Read Count"> &nbsp;{{data.stats.count}}</span>
+	</div>
+	<div class="list-group-item">
+		<i>{{data.info.summary.replace(/\r?\n/g, '<br />')}}
+		</i>
+	</div>
+	<!-- for(var i in data.chapters){ -->
+
+	<a jqrouter href="#/chapter/{{data.chapters[i].inorder}}"
+		class="list-group-item" style="height: 62px;"> <span class="badge"
+		title="Total Comments">{{data.chapters[i].reviews}}</span> <span
+		class="badge" style="background-color: #f90" title="Rating">{{data.chapters[i].rating}}</span>
+		<span class="badge">{{data.chapters[i].isNew? "New" : ""}}</span> <b>{{data.chapters[i].title}}</b>
+		<span class="text-muted">by {{data.chapters[i].penname}}</span>
+		<div class="clearfix"></div>
+		<div class="clear text-muted small"
+			style="height: 14px; width: 80%; overflow: hidden">{{data.chapters[i].notes}}</div>
+		<div class="clearfix"></div> <span class="btn btn-link btn-sm"
+		style="margin-top: 0px; float: left; padding: 0px" title="Categories">
+
+	</span>
+	</a>
+
+	<!-- } -->
+</div>

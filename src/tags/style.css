@@ -1,0 +1,373 @@
+/* Cascading Style Sheets Coded By NubPro */
+
+/* Global Properties --------------------------------*/
+* {
+	margin:0;
+	padding:0;
+}
+
+body {
+	background:url(images/bg.png) repeat-x #ebf8ff;
+	width:100%;
+	height:100%;
+	font-family:Trebuchet MS;
+}
+
+#header {
+	background:url(images/header.png) no-repeat;
+	width:852px;
+	height:253px;
+	margin:0 auto;
+}
+
+#logo {
+	width:521px;
+	height:61px;
+	padding:10em 0 0 18em;
+}
+
+#wrapper {
+	width:868px;
+	margin:0 auto;
+	padding:0 20px;
+}
+/* ------------------------------------------------- */
+
+/* Navigataion ------------------------------------- */
+.nav {
+	background:url(images/nav.png) bottom repeat-x;
+	width:868px;
+	height:62px;
+	margin:0 auto;
+}
+
+.nav .left {
+	background:url(images/nav.png) top left no-repeat;
+	width:4px;
+	height:62px;
+	float:left;
+}
+
+.nav .right {
+	background:url(images/nav.png) -4px top no-repeat;
+	width:4px;
+	height:62px;
+	float:right;
+}
+
+.nav ul {
+	margin-left:10px; /*edit this line*/
+	list-style:none;
+	font-size:18px;
+	color:#FFFFFF;	
+}
+
+.nav a {
+	color:#FFFFFF;	
+	text-decoration:none;
+	display:block;
+	margin-top:1px;
+	line-height:60px;
+	padding:0 24px 0 24px;
+	background:url(images/nav.png) center right no-repeat;
+}
+
+.nav .last {
+	background:none;
+	text-align:center;
+}
+
+.nav a:hover {
+	color:#b2daf2;
+}
+
+.nav .active {
+	color:#b2daf2;
+}
+
+.nav li {
+	float:left;
+}
+
+.dropdown {
+	background:url(images/sprites.png) bottom right no-repeat;
+	width:844px;
+	height:22px;
+	display:none;
+	position:absolute;
+	margin-left:12px;
+}
+
+.dropdown li {
+	padding:2px 2px 0 20px;
+	text-align:left;
+	list-style:none;	
+	font-size:13px;
+	float:left;
+}
+
+.dropdown a {
+	color:#000000;
+	text-decoration:none;
+}
+
+.dropdown a:hover {
+	color:#257fe6;
+}
+/* ------------------------------------------------- */
+
+
+
+/* Broadcast --------------------------------------- */
+#broadcast {
+	background:url(images/broadcast.png) bottom repeat-x;
+	width:588px;
+	height:34px;
+	margin-top:29px;
+	float:right;
+}
+
+#broadcast #megaphone {
+	background:url(images/broadcast.png) top left no-repeat;
+	width:31px;
+	height:34px;
+	position:absolute;
+}
+
+#broadcast #end {
+	background:url(images/broadcast.png) top right no-repeat;
+	width:6px;
+	height:34px;
+	float:right;
+}
+
+#broadcast marquee {
+	width:588px;
+	position:absolute;
+	color:#ffffff;
+	font-size:14px;
+	padding-top:8px;
+}
+/* ------------------------------------------------- */
+
+/* Content ----------------------------------------- */
+.cont-frame {
+	width:588px;
+	float:right;
+	margin-top:20px;
+}
+
+.cont-frame .top {
+	background:url(images/content.png) top left no-repeat;
+	width:588px;
+	height:38px;
+}
+
+.cont-frame .title {
+	font-size:14px;
+	color:#ffffff;
+	padding:10px 15px;
+}
+
+.cont-frame .body {
+	background:url(images/content.png) right repeat-y;
+	width:588px;
+}
+
+.cont-frame .content {
+	font-size:13px;
+	padding:15px 16px;
+	text-align:justify;
+}
+
+.cont-frame .content a {
+	text-decoration:none;
+	color:#00a0ff;
+}
+
+.cont-frame .content a:hover {
+	text-decoration:underline;
+}
+
+.cont-frame .bottom {
+	background:url(images/content.png) bottom left no-repeat;
+	width:588px;
+	height:6px;
+}
+/* ------------------------------------------------- */
+
+/* Panel ------------------------------------------- */
+#side-area {
+	margin-top:30px;
+}
+
+.panel {
+	width:258px;
+	color:#ffffff;
+}
+
+.panel .top {
+	background:url(images/panel.png) top left no-repeat;
+	width:258px;
+	height:28px;
+}
+
+.panel .top .title {
+	width:227px;
+	font-size:14px;
+	text-transform:uppercase;
+	padding:7px 0 0 15px;
+}
+
+.panel .body {
+	background:url(images/panel.png) top right repeat-y;
+	width:258px;
+}
+
+.panel .body .content {
+	width:223px;
+	margin:0 auto;
+	padding:17px 0;
+	text-align:left;
+	font-size:14px;
+}
+
+.panel ul {
+	list-style:url(images/arrow.png) inside;
+	font-size:10px;
+	padding:15px 0 10px 0;
+	text-transform:uppercase;
+}
+
+.panel li {
+	padding-bottom:2px;
+}
+
+
+.panel li a {
+	color:#ffffff;
+	text-decoration:none;
+}
+
+.panel li a:hover {
+	color:#86d2ff;
+	text-decoration:underline;
+}
+
+#mush {
+	background:url(images/sprites.png) -41px top no-repeat;
+	width:45px;
+	height:45px;
+	position:absolute;
+	margin:5px 0 0 160px;
+}
+
+.login {
+	background:url(images/buttons.png) top left no-repeat;
+	cursor:pointer;
+	border:none;
+	width:98px;
+	height:29px;
+}
+
+.login:hover {
+	background:url(images/buttons.png) bottom left no-repeat;
+	width:98px;
+	height:29px;
+}
+
+.register {
+	background:url(images/buttons.png) top right no-repeat;
+	margin-left:4px;
+	cursor:pointer;
+	border:none;
+	width:98px;
+	height:29px;
+}
+
+.register:hover {
+	background:url(images/buttons.png) bottom right no-repeat;
+	width:98px;
+	height:29px;
+}
+
+.style1 {
+	color:#86d2ff;
+	font-size:14px;
+	text-transform:uppercase;
+	padding-bottom:2px;
+}
+
+.panel .bottom {
+	background:url(images/panel.png) bottom left no-repeat;
+	width:258px;
+	height:4px;
+}
+
+.area {
+	background:url(images/area.png) top right no-repeat;
+	border:0;
+	color:#fefefe;
+	font-size:11px;
+	width:183px;
+	height:27px;
+	float:right;
+	margin-bottom:5px;
+}
+
+#user {
+	background:url(images/area.png) top left no-repeat;
+	width:40px;
+	height:27px;
+	position:absolute;
+}
+
+#pass {
+	background:url(images/area.png) bottom left no-repeat;
+	width:40px;
+	height:27px;
+	position:absolute;
+}
+
+.more a {
+	background:url(images/sprites.png) top left no-repeat;
+	width:41px;
+	height:8px;
+	position:absolute;
+	margin:12px 0 0 200px;
+}
+
+.more a:hover {
+	background:url(images/sprites.png) 0 -8px  no-repeat;
+	width:41px;
+	height:8px;
+}
+
+/* ------------------------------------------------- */
+
+/* Footer ------------------------------------------ */
+#footer {
+	background:url(images/sprites.png) top right no-repeat;
+	width:857px;
+	height:40px;
+	margin:25px 0;		
+}
+
+#footer #info {
+	padding-top:6px;
+	line-height:14px;
+	text-align:center;
+	color:#ffffff;
+	font-size:11px;
+
+}
+
+#footer a {
+	color:#ffffff;
+	text-decoration:none;
+}
+
+#footer a:hover {
+	text-decoration:underline;
+}
+/* ------------------------------------------------- */

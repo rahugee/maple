@@ -1,0 +1,29 @@
+
+<div class="list-group panel-default">
+	<ol class="breadcrumb list-group-item">
+		<li><a jqrouter href="#/stories">Stories</a></li>
+		<li><a jqrouter href="#/info">{{data.info.title}}</a></li>
+		<li class="active"><b>{{data.chapter.title}}</b></li>
+	</ol>
+	<div class="list-group-item story-stats maple-details">
+		<span class="fa fa-pencil fa-lg"> {{data.chapter.penname}}</span> <span
+			class="fa fa-star fa-lg"> {{data.chapter.rating}}</span> <a
+			jqrouter href="#/comments/{{data.chapter.inorder}}/{{data.chapter.chapid}}"
+			class="fa fa-comments fa-lg"> {{data.chapter.reviews}}</a>
+		<div class="clearfix"></div>
+		<span class="btn btn-link btn-sm"
+			style="margin-top: 0px; float: left; padding: 0px" title="Categories">
+		</span>
+	</div>
+	<div class="list-group-item">
+		<i>{{data.chapter.notes.replace(/\r?\n/g, '<br />')}}
+		</i>
+	</div>
+	<p class="list-group-item">
+		{{data.chapter.storytext.replace(/\r?\n/g, '<br />')}}
+	</p>
+	<p class="list-group-item">
+		{{data.chapter.endnotes.replace(/\r?\n/g, '<br />')}}
+	</p>
+
+</div>

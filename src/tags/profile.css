@@ -1,0 +1,41 @@
+body {
+	min-height: 2000px;
+	padding-top: 40px;
+}
+
+.profile_image_container .profile_image_link {
+	width: 160px;
+}
+
+.profile_image_container .profile_name {
+	line-height: 36px;
+	color: inherit;
+	font-family: inherit;
+	font-weight: bold;
+	margin: 0;
+	text-rendering: optimizelegibility;
+}
+
+
+.maple-details {
+	background-color: rgb(245, 245, 245);
+}
+
+.story-stats {
+	height: 40px; padding-bottom: 0; padding-top: 10px;
+}
+.story-stats .fa {
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: left;
+}
+
+[perm-user]{
+	display :none!important;
+}
+[perm-moderator]{
+	display :none!important;
+}
+[perm-admin]{
+	display :none!important;
+}

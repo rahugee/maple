@@ -1,0 +1,64 @@
+{
+  "engines": {
+    "node": "0.12.x"
+  },
+  "name": "annam-web-app",
+  "private": true,
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "main": "",
+  "dependencies": {
+    "grunt": "~0.4.5",
+    "grunt-bootloader": "0.1.7",
+    "grunt-contrib-connect": "0.3.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-ftp-diff-deployer": "^0.2.0"
+  },
+  "devDependencies_old": {
+  },
+  "jsbeautifier": {
+    "html": {
+      "brace_style": "collapse",
+      "indent_char": "\t",
+      "indent_scripts": "keep",
+      "indent_size": 1,
+      "indent_with_tabs": true,
+      "max_preserve_newlines": 10,
+      "preserve_newlines": true,
+      "unformatted": [
+        "a",
+        "sub",
+        "sup",
+        "b",
+        "i",
+        "u"
+      ],
+      "wrap_line_length": 0
+    },
+    "css": {
+      "indent_char": " ",
+      "indent_size": 4
+    },
+    "js": {
+      "brace_style": "collapse",
+      "break_chained_methods": false,
+      "e4x": false,
+      "eval_code": false,
+      "indent_char": " ",
+      "indent_level": 0,
+      "indent_size": 2,
+      "indent_with_tabs": false,
+      "jslint_happy": false,
+      "keep_array_indentation": false,
+      "keep_function_indentation": false,
+      "max_preserve_newlines": 10,
+      "preserve_newlines": true,
+      "space_before_conditional": true,
+      "space_in_paren": false,
+      "unescape_strings": false,
+      "wrap_line_length": 0
+    }
+  }
+}

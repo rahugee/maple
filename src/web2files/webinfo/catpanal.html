@@ -1,0 +1,24 @@
+<div class="list-group panel-default collapse in">
+	<a class="list-group-item text-muted panel-heading">Categories <i
+		class="fa fa-dashboard fa-1x"></i>
+	</a>
+	<!--  for(var i=0; i<data.length; i++){ -->
+		<!--  if(i===5){ -->
+			<div id="categories" class="collapse">
+		<!-- } -->
+			<a jqroute class="list-group-item text-right" rx-on-click="item_selected" data-cat-id={{data[i].id}}>
+				<span class="pull-left">
+					<strong>{{data[i].info.category}}</strong>
+				</span>
+			 	{{data[i].info.numitems}}
+			 </a>
+		<!--  if(i == data.length-1 && i>4){ -->
+			</div>
+		<!-- } -->
+	<!-- } -->
+	
+	<button class="btn btn-default btn-sm btn-block"
+		data-toggle="collapse" data-target="#categories">
+		More <span class="caret"></span>
+	</button>
+</div>
