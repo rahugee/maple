@@ -5,7 +5,7 @@
     "minimum-stability": "dev",
     
     "require": {
-		"rudrax/boot" : "dev-master"
+		"rudrax/boot" : ">=0.0.1"
     },
     
     "require-dev-no": {
