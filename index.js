@@ -14,15 +14,18 @@ var file = new static.Server({
     }
 });
 require('http').createServer(function(request, response) {
-    if((/\/(src|dist|build)\//).test(request.url)){
-        request.addListener('end', function() {
-            file.serve(request, response);
-        }).resume();
-    } else {
-        request.addListener('end', function() {
-            file.serveFile("index.html",200, {}, request, response);
-        }).resume();
-
+    try{
+        if((/\/(src|dist|build)\//).test(request.url)){
+            request.addListener('end', function() {
+                file.serve(request, response);
+            }).resume();
+        } else {
+            request.addListener('end', function() {
+                file.serveFile("index.html",200, {}, request, response);
+            }).resume();
+        }
+    } catch(e){
+        console.log("Error Occured for req",request.url);
     }
 
 }).listen(process.env.PORT || 3000);
