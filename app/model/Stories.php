@@ -166,7 +166,7 @@ namespace app\model {
 				",
                 $title, $title, $this->filter_cat, $this->filter_clas
             );
-            header("X-SQL:" . $RDb->sql);
+            //header("X-SQL:" . $RDb->sql);
             return $this->resolveValues($stories);
         }
     }
