@@ -3,7 +3,7 @@
   "name" : "maple",
   "maple/webmodules" :{
     "js" : ["components/typeahead.js/dist/typeahead.bundle.js"],
-    "on" : ["webmodules/jquery","webmodules/bootstrap","fortawesome/font-awesome","webmodules/jqrouter","webmodules/jqbus"]
+    "on" : ["webmodules/jquery","webmodules/bootstrap","fortawesome/font-awesome","webmodules/jqrouter","webmodules/jqbus","jsutils/cache"]
   },
   "maple/spamjs" : {
     "on" : ["spamjs/view","spamjs/navbar"]

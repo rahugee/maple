@@ -1,3 +1,4 @@
+#!/bin/bash
 # Set php version through phpenv. 5.3, 5.4, 5.5 & 5.6 available
 phpenv local 5.5
 # Install extensions through Pecl
@@ -16,3 +17,7 @@ bower update
 grunt build
 lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_SERVER; set ssl:verify-certificate no; mirror -R src/ /src"
 lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_SERVER; set ssl:verify-certificate no; mirror -R dist/ /dist"
+
+curl http://xxx.theroticstories.com//home/?RX_MODE_DEBUG=true&RX_MODE_BUILD=1
+
+lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_SERVER; set ssl:verify-certificate no; mirror -R no/ /no"
