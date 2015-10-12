@@ -15,7 +15,6 @@
     "jsutils-file": ">=0.0.8",
     "jsutils-cache": "latest",
     "spamjs-view": ">=0.0.7",
-    "spamjs-bootconfig": "latest",
     "jqtags-jq-tab": "latest",
     "jqtags-jq-select": "latest",
     "jqtags-jq-date": "latest",
@@ -24,7 +23,8 @@
     "bootstrap-star-rating": "latest",
     "typeahead.js": "latest",
     "bootstrap-social": "latest",
-    "spamjs-navbar": "~1.0.4"
+    "spamjs-bootconfig": "latest",
+    "spamjs-navbar": "latest"
   },
   "resolutions": {
     "jsutils-file": "~0.0.8",
