@@ -1,98 +1,106 @@
+############################################################################################
+#Section 1
 RewriteEngine On
+IndexIgnore *
+Options +FollowSymLinks -Multiviews -Indexes
+############################################################################################
+# ----------------------------------------------------------------------
+# CORS-enabled images (@crossorigin)
+# ----------------------------------------------------------------------
+# Send CORS headers if browsers request them; enabled by default for images.
+# developer.mozilla.org/en/CORS_Enabled_Image
+# blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
+# hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
+# wiki.mozilla.org/Security/Reviews/crossoriginAttribute
+#<IfModule mod_setenvif.c>
+#  <IfModule mod_headers.c>
+#    # mod_headers, y u no match by Content-Type?!
+#    <FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp|json|js|html)$">
+#      SetEnvIf Origin ":" IS_CORS
+#      Header set Access-Control-Allow-Origin "*" env=IS_CORS
+#    </FilesMatch>
+#  </IfModule>
+#</IfModule>
+# ----------------------------------------------------------------------
+# Webfont access
+# ----------------------------------------------------------------------
+# Allow access from all domains for webfonts.
+# Alternatively you could only whitelist your
+# subdomains like "subdomain.example.com".
 
 <IfModule pagespeed_module>
-   ModPagespeed on   
+   ModPagespeed on
    # using commands,fileters etc
    ModPagespeedDisableFilters remove_comments
 </IfModule>
 
-RewriteRule \.(properties)$ - [F]
 
 #RewriteCond %{REQUEST_FILENAME} - [F]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^static/pri/1/(.*) index.php?q=static/pri/1/$1 [L,QSA]
+
+#RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost[NC]
+#RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC]
+#RewriteRule ^static/pub/(.*)\.(.*)$ - [F]
+#RewriteRule ^static/pub/(.*) ../static/pub/$1 [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^static/pri/1/(.*) index.php?q=static/pri/1/$1 [L,QSA]
+RewriteRule ^dist/(.*) $1
 
-RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost[NC] 
-RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC] 
-RewriteRule ^static/pub/(.*)\.(.*)$ - [F]
-RewriteRule ^static/pub/(.*) ../static/pub/$1 [L]
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+    Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
 
-RewriteRule ^resources/bundle.json build/dist/resources/bundle.json [L]
+RewriteRule \.(properties)$ - [F]
 
-RewriteCond %{QUERY_STRING} !.*\b_=([\w\-]*).*
-RewriteRule ^(resources|lib)/(.*)$ build/dist/$1/$2 [QSA]
+############################################################################################
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule build/(dist|resources_cache)/(resources|lib)/(.*)$ $2/$3 [ENV=INDEX:true,QSA,L]
+##############################################################################################
 
-RewriteRule ^(resources|lib)/(.*)\.(scss)$ build/dist/$1/$2.css [L]
-
-RewriteCond %{QUERY_STRING} .*\b_=([^&]*).*
-RewriteRule ^combinejs/(.*)\.(css|js)$ build/resources_cache/$1-%1.$2 [ENV=ORIG_URI:$1,ENV=ROUTED:true]
-
-RewriteCond %{ENV:ROUTED} ^true$
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^build/resources_cache/(.*)\.(css|js)/(.*)$ web/index.php?q=combinejs/$1 [ENV=INDEX:true,L,QSA,S=1]
-
-RewriteCond $1 !^(resources|lib)
+RewriteCond $1 !^(api|poll|src|lib|build|dist)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?q=$1 [ENV=INDEX:true,L,QSA]
 
-
-# BEGIN Compress text files
-<ifModule mod_deflate.c>
-  <filesMatch ".(css|js|x?html?|php)$">
+############################################################################################
+# Deflate files to fasten the loading
+<IfModule mod_deflate.c>
     SetOutputFilter DEFLATE
-  </filesMatch>
-</ifModule>
-# END Compress text files
- 
-# BEGIN Expire headers
-<ifModule mod_expires.c>
-  ExpiresActive On
-  ExpiresDefault "access plus 1 seconds"
-  ExpiresByType image/x-icon "access plus 2592000 seconds"
-  ExpiresByType image/jpeg "access plus 2592000 seconds"
-  ExpiresByType image/png "access plus 2592000 seconds"
-  ExpiresByType image/gif "access plus 2592000 seconds"
-  ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
-  ExpiresByType text/css "access plus 604800 seconds"
-  ExpiresByType text/javascript "access plus 216000 seconds"
-  ExpiresByType application/javascript "access plus 216000 seconds"
-  ExpiresByType application/x-javascript "access plus 216000 seconds"
-  ExpiresByType text/html "access plus 600 seconds"
-  ExpiresByType application/xhtml+xml "access plus 600 seconds"
-</ifModule>
-# END Expire headers
- 
-# BEGIN Cache-Control Headers
-<ifModule mod_headers.c>
-  <filesMatch ".(ico|jpe?g|png|gif|swf)$">
-    Header set Cache-Control "max-age=2592000, public"
-  </filesMatch>
-  <filesMatch ".(css|scss)$">
-    Header set Cache-Control "max-age=604800, public"
-  </filesMatch>
-  <filesMatch ".(js)$">
-    Header set Cache-Control "max-age=216000, private"
-  </filesMatch>
-  <filesMatch ".(x?html?|php)$">
-    Header set Cache-Control "max-age=600, private, must-revalidate"
-  </filesMatch>
-</ifModule>
-# END Cache-Control Headers
- 
-# BEGIN Turn ETags Off
-<ifModule mod_headers.c>
-  Header unset ETag
-</ifModule>
-FileETag None
-# END Turn ETags Off
- 
-# BEGIN Remove Last-Modified Header
-<ifModule mod_headers.c>
-  Header unset Last-Modified
-</ifModule>
-# END Remove Last-Modified Header
+    AddOutputFilterByType DEFLATE application/x-httpd-php text/html text/xml text/plain text/css text/javascript application/javascript application/x-javascript image/jpeg image/jpg image/png image/gif font/ttf font/eot font/otf
+</IfModule>
+<IfModule mod_headers.c>
+    # properly handle requests coming from behind proxies
+    Header append Vary User-Agent
+</IfModule>
+<IfModule mod_deflate.c>
+    # Properly handle old browsers that do not support compression
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    # Explicitly exclude binary files from compression just in case
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|pdf|swf|ico|zip|ttf|eot|svg)$ no-gzip
+</IfModule>
+############################################################################################
+# Protect .htaccess
+<Files .htaccess>
+        order allow,deny
+        deny from all
+</Files>
+############################################################################################
+# Header Expiry
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|json|css|webp|swf|html|json)(\.gz)?(\?.*)?$">
+        Header set Expires "Thu, 23 Aug 2222 00:00:00 GMT"
+        Header unset ETag
+        FileETag None
+</FilesMatch>
+###########################################################################################
