@@ -15,7 +15,8 @@
       "searchbar/maple.searchbar.js",
       "storieslist/maple.storieslist.js",
       "home/maple.home.js",
-      "story/maple.story.js"
+      "story/maple.story.js",
+      "author/maple.author.js"
     ],
     "on": ["maple/webmodules",  "maple/spamjs",  "maple/service" ]
   },

@@ -6,12 +6,12 @@
 					href="/story/{{data.info.sid}}#/info"
 					class="center-block profile_image_link"><img
 						title="profile image" class="img-responsive"
-						src="{{CONTEXT_PATH}}{{COVER_PATH}}/cover0.jpeg"> </a></li>
+						src="{{COVER_PATH}}/cover0.jpeg"> </a></li>
 				<li class="list-group-item text-right"><span class=""><strong>{{data.info.title}}</strong>
-				</span><br /> <span class="pull">by <a
-						href="{{CONTEXT_PATH}}user/{{data.info.uid}}/{{data.info.penname}}"><strong>{{data.info.penname}}</strong></span></a><br />
+				</span><br /> <span class="pull">by <a jqrouter
+						href="/user/{{data.info.uid}}/{{data.info.penname}}"><strong>{{data.info.penname}}</strong></span></a><br />
 					<span class="pull"> <!-- if(data.info.coauthors && data.coauthors){ for(var i in data.coauthors){ -->
-						<a href="{{CONTEXT_PATH}}user/{{i}}/{{data.coauthors[i]}}">{{data.coauthors[i]}}</a>,
+						<a jqrouter href="/user/{{i}}/{{data.coauthors[i]}}">{{data.coauthors[i]}}</a>,
 						<!-- }} -->
 				</span></li>
 			</ul>

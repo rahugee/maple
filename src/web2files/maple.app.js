@@ -15,6 +15,7 @@ define({
 			"click a[jqrouter]" : "routerNavigation"
 		},
 		routerEvents : {
+			"/boot/*" : "openDevSection",
 			"/home/" : "maple.home",
 			"/story/{sid}/*" : "maple.story",
 			"/user/{uid}/*" : 'maple.author'
@@ -39,6 +40,16 @@ define({
 				self.add(targetModule.instance({
 					id : "main_module",
 					options : e.params
+				}));
+			});
+		},
+		openDevSection: function(e,target,data) {
+			console.error("openDevSection",e,target,data)
+			var self = this;
+			module("spamjs.bootconfig", function(myModule) {
+				self.add(myModule.instance({
+					id: "bootconfig",
+					routerBase: "/boot/"
 				}));
 			});
 		},

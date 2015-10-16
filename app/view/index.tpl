@@ -13,9 +13,10 @@
             debugBundles: [],
             CONST : {
                 CONTEXT_PATH : '{$context_path}',
-                COVER_PATH : '/src/cover',
+                COVER_PATH : '{$context_path}/static/cover/',
                 USER_LINK : "/user/",
-                STORY_LINK : "/story/"
+                STORY_LINK : "/story/",
+                DP_PATH : "{$context_path}/static/pic_authors/"
             }
         });
     </script>

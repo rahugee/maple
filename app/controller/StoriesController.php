@@ -91,6 +91,21 @@ namespace app\controller {
                 return null;
             }
         }
+
+        /**
+         * @RequestMapping(url="json/user_stories",type=json)
+         * @RequestParams(true)
+         */
+        public function storiesByUser($uid = null)
+        {
+            $stories = new Stories();
+            if ($uid != NULL && is_numeric($uid)) {
+                return $stories->byUser($uid);
+            } else {
+                return null;
+            }
+
+        }
     }
 }
 

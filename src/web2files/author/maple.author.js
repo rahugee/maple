@@ -1,6 +1,7 @@
 define({ 
 	name : 'maple.author',
-	using : ['spamjs.view',"DataService"]
+	extend : 'spamjs.view',
+	using : ["DataService"]
 }).as(function(author,SERVER){
 	
 	author._init_ = function(){
@@ -9,25 +10,25 @@ define({
 			self.loadProfile(),
 			self.loadStories()
 		).done(function(){
-			self.renderStories();
+			//self.renderStories();
 		});
 	};
 	
 	author.loadProfile = function(){
 		var self = this;
-		return SERVER.get("profile_user",{uid : self.options.uid}).done(function(resp){
+		return SERVER.get("user_details",{uid : self.options.uid}).done(function(resp){
 			console.info("profile_user",resp)
 			self.profile = resp;
-			self.renderStories();
+			self.renderProfile();
 		});
 	};
 	
 	author.loadStories = function(){
 		var self = this;
-		return SERVER.get("storieslist_user",{uid : self.options.uid}).done(function(resp){
+		return SERVER.get("user_stories",{uid : self.options.uid}).done(function(resp){
 			console.info("storieslist_user",resp)
 			self.stories = resp;
-			self.renderProfile();
+			self.renderStories();
 		});
 	};
 	
