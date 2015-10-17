@@ -2,16 +2,15 @@
 	<div class="list-group list-group">
 		<div class="list-group-item order_by" style="height: 45px">
 			<div class="btn-group pull-left">
-				<select id=type style="font-size: 10px; height:25px"
+				<select id=type style="font-size: 10px; height:25px" jqrouter-param="type"
 					rx-on-change="type_change">
-					<option value=""{{""===data.type ? "selected" : ""}}>Any
-						Type</option>
+					<option value=""{{""===data.type ? "selected" : ""}}>Any Type</option>
 					<!-- for(var i in data.types){ -->
 					<option value="{{data.types[i].id}}"
-						{{data.types[i].id===data.type? "selected" : ""}}>
+						{{data.types[i].id=== data.type ? "selected" : ""}}>
 						{{data.types[i].name}}</option>
 					<!--  } -->
-				</select> <select id=languages style="font-size: 10px; height:25px"
+				</select> <select class=languages style="font-size: 10px; height:25px" jqrouter-param="language"
 					rx-on-change="language_change">
 					<option value=""{{""===data.language ? "selected" : ""}}>Any
 						Language</option>
@@ -23,27 +22,27 @@
 				</select>
 			</div>
 			<div class="btn-group pull-right">
-				<a type="button" href="#&order_by=date"
+				<a type="button" jqrouter-param="order_by" value="date"
 					class="btn btn-default btn-xs jqrouter">Latest</a> <a type="button"
-					href="#&order_by=updated"
+					 jqrouter-param="order_by" value="updated"
 					class="btn btn-default btn-xs active jqrouter"> Recently
-					Updated</a> <a type="button" href="#&order_by=rating"
+					Updated</a> <a type="button"  jqrouter-param="order_by" value="rating"
 					class="btn btn-default btn-xs jqrouter">Top Rated </a> <a
-					type="button" href="#&order_by=commentedon"
+					type="button"  jqrouter-param="order_by" value="commentedon"
 					class="btn btn-default btn-xs jqrouter">Recently Discussed</a>
 			</div>
 		</div>
-		
+
 		<include src="storieslist.html" data={stories:data.stories} />
-		
+
 		<div id="stories" class="collapse">
 
-			<a href="#" class="list-group-item"><span class="badge">14</span>
-				Active item</a> <a href="#" class="list-group-item"><span
+			<a jqrouter-param="languages" class="list-group-item"><span class="badge">14</span>
+				Active item</a> <a href="#" jqrouter-param="languages" class="list-group-item"><span
 				class="badge">3</span> Second item</a> <a href="#"
 				class="list-group-item"><span class="badge">25</span> Third item</a>
-			<a href="#" class="list-group-item"><span class="badge">14</span>
-				Active item</a> <a href="#" class="list-group-item"><span
+			<a jqrouter-param="languages" class="list-group-item"><span class="badge">14</span>
+				Active item</a> <a jqrouter-param="languages" class="list-group-item"><span
 				class="badge">3</span> Second item</a>
 		</div>
 

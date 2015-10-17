@@ -12,7 +12,10 @@ define({
 	jqrouter.start(bootloader.config().appContext);
 	return {
 		events : {
-			"click a[jqrouter]" : "routerNavigation"
+			"click a[jqrouter]" : "routerNavigation",
+			"change [jqrouter-param]"  :"routerQueryParamChange",
+			"click a[jqrouter-param]"  :"routerQueryParamChange",
+			"click a[jqrouter-params]"  :"routerQueryParamUpdate"
 		},
 		routerEvents : {
 			"/boot/*" : "openDevSection",
@@ -61,8 +64,30 @@ define({
 			}
 			return preventPropagation(e);
 		},
+		routerQueryParamChange : function(e,target){
+			var param = target.getAttribute("jqrouter-param");
+			if(param){
+				jqrouter.setQueryParam(param,target.value || target.getAttribute("value"));
+			}
+			return preventPropagation(e);
+		},
+		routerQueryParamUpdate : function(e,target){
+			var param = target.getAttribute("jqrouter-params");
+			if(param){
+				var selectedVal = target.value || target.getAttribute("value");
+				var selected = this.router.getQueryParam(param) || [];
+				var pos = selected.indexOf(selectedVal);
+			}
+			if (pos == -1) {
+				selected.push(selectedVal);
+			} else {
+				selected.splice(pos, 1);
+			}
+			this.router.setQueryParam(param, selected);
+			return preventPropagation(e);
+		},
 		_remove_ : function(){
-			self.router.off();
+			this.router.off();
 		},
 		_ready_ : function(){
 			this.instance().addTo(jQuery("body"));
