@@ -9,7 +9,7 @@ namespace app\controller {
 
 
         /**
-         * @RequestMapping(url="json/user_details",type=json)
+         * @RequestMapping(url="json/user_details",type=json, cache=true)
          * @RequestParams(true)
          */
         public function userDetails($uid) {

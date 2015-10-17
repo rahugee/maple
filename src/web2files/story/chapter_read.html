@@ -18,17 +18,21 @@
               style="margin-top: 0px; float: left; padding: 0px" title="Categories">
 		</span>
     </div>
+    <!-- if(data.chapter.notes.trim()){ -->
     <div class="list-group-item">
         <i>{{data.chapter.notes.replace(/\r?\n/g, '<br/>')}}
         </i>
     </div>
+    <!-- } -->
     <p class="list-group-item text-reading">
         {{data.chapter.storytext.replace(/\r?\n/g, '<br/>')}}
     </p>
 
-    <p class="list-group-item">
-        {{data.chapter.endnotes.replace(/\r?\n/g, '<br/>')}}
-    </p>
+    <!-- if(data.chapter.endnotes.trim()){ -->
+        <p class="list-group-item">
+            {{data.chapter.endnotes.replace(/\r?\n/g, '<br/>')}}
+        </p>
+    <!-- } -->
 
     <div class="list-group-item story-stats maple-details">
         <a

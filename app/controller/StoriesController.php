@@ -15,7 +15,6 @@ namespace app\controller {
          */
         public function storyAutoComplete($search = "")
         {
-
             $response = array();
             $RDb = DBService::getDB();
             $res = $RDb->fetchAll("SELECT * FROM search_cache
@@ -37,13 +36,14 @@ namespace app\controller {
         }
 
         /**
-         * @RequestMapping(url="json/storieslist",type=json)
+         * @RequestMapping(url="json/storieslist",type=json, cache=true)
          * @RequestParams(true)
          */
         public function searchStories($search = "", $order_by = "updated", $search_by = "title",
                                       $categories = array(), $language = "", $type = "", $page=0)
         {
 
+            $search = trim(preg_replace('/ +/', ' ', $search));
             $offset = $page*50;
             $stories = new Stories ();
             $stories->RELEVANCE = empty($search) ? 0 : 0.1;
@@ -68,7 +68,7 @@ namespace app\controller {
         }
 
         /**
-         * @RequestMapping(url="json/view_story",type=json)
+         * @RequestMapping(url="json/view_story",type=json, cache=true)
          * @RequestParams(true)
          */
         public function viewStory($sid)
