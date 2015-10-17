@@ -43,12 +43,12 @@ namespace app\model {
 			return $reviews;
 		}
 
-		public static function getByChapter($sid, $chapid)
+		public static function getByChapter($sid, $chapid, $page=0)
 		{
 			$RDb = DBService::getDB();
 			//$RDb->printQ = TRUE;
 			$reviews = $RDb->fetchAll(self::$query .
-				" AND chapter.chapid = '%d' ORDER BY date desc", $chapid
+				" AND chapter.chapid = '%d' ORDER BY date desc limit ".($page*10).", 10", $chapid
 			);
 			return $reviews;
 		}

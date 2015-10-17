@@ -54,6 +54,7 @@ define({
 	};
 	
 	author._remove_ = function(){
+
 	};
 	
 });

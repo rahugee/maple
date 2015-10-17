@@ -16,7 +16,7 @@ define({
 		},
 		routerEvents : {
 			"/boot/*" : "openDevSection",
-			"/home/" : "maple.home",
+			"/stories/*" : "maple.home",
 			"/story/{sid}/*" : "maple.story",
 			"/user/{uid}/*" : 'maple.author'
 		},
@@ -32,6 +32,7 @@ define({
 			}));
 			console.error("jqrouter");	
 			self.router = jqrouter.instance().bind(this);
+			self.router.otherwise("/stories")
 		},
 		_routerEvents_ : function(e,targetName,data){	
 			var self = this;

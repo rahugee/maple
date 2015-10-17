@@ -1,29 +1,44 @@
-
 <div class="list-group panel-default">
-	<ol class="breadcrumb list-group-item">
-		<li><a jqrouter href="#/stories">Stories</a></li>
-		<li><a jqrouter href="#/info">{{data.info.title}}</a></li>
-		<li class="active"><b>{{data.chapter.title}}</b></li>
-	</ol>
-	<div class="list-group-item story-stats maple-details">
-		<span class="fa fa-pencil fa-lg"> {{data.chapter.penname}}</span> <span
-			class="fa fa-star fa-lg"> {{data.chapter.rating}}</span> <a
-			jqrouter href="#/comments/{{data.chapter.inorder}}/{{data.chapter.chapid}}"
-			class="fa fa-comments fa-lg"> {{data.chapter.reviews}}</a>
-		<div class="clearfix"></div>
+    <ol class="breadcrumb list-group-item">
+        <li><a jqrouter href="#/stories">Stories</a></li>
+        <li><a jqrouter href="#/info">{{data.info.title}}</a></li>
+        <li class="active"><b>{{data.chapter.title}}</b></li>
+    </ol>
+
+
+    <div class="list-group-item story-stats maple-details">
+        <span class="fa fa-pencil fa-lg-x"> {{data.chapter.penname}}</span> <span
+            class="fa fa-star fa-lg-x"> {{data.chapter.rating}}</span> <a
+            jqrouter href="#/comments/{{data.chapter.inorder}}/{{data.chapter.chapid}}"
+            class="fa fa-comments fa-lg-x"> <strong>{{data.chapter.reviews}}</strong> comments</a>
+        <span class="chapter-pagination-here pull-right"></span>
+
+        <div class="clearfix"></div>
 		<span class="btn btn-link btn-sm"
-			style="margin-top: 0px; float: left; padding: 0px" title="Categories">
+              style="margin-top: 0px; float: left; padding: 0px" title="Categories">
 		</span>
-	</div>
-	<div class="list-group-item">
-		<i>{{data.chapter.notes.replace(/\r?\n/g, '<br />')}}
-		</i>
-	</div>
-	<p class="list-group-item">
-		{{data.chapter.storytext.replace(/\r?\n/g, '<br />')}}
-	</p>
-	<p class="list-group-item">
-		{{data.chapter.endnotes.replace(/\r?\n/g, '<br />')}}
-	</p>
+    </div>
+    <div class="list-group-item">
+        <i>{{data.chapter.notes.replace(/\r?\n/g, '<br/>')}}
+        </i>
+    </div>
+    <p class="list-group-item text-reading">
+        {{data.chapter.storytext.replace(/\r?\n/g, '<br/>')}}
+    </p>
+
+    <p class="list-group-item">
+        {{data.chapter.endnotes.replace(/\r?\n/g, '<br/>')}}
+    </p>
+
+    <div class="list-group-item story-stats maple-details">
+        <a
+                jqrouter href="#/comments/{{data.chapter.inorder}}/{{data.chapter.chapid}}"
+                class="fa fa-comments fa-lg-x"> <strong>{{data.chapter.reviews}}</strong> comments</a>
+
+        <p class="chapter-pagination-here pull-right"></p>
+    </div>
+    <div class="list-group-item maple-details">
+        <include src="chapter_comment.html" data={} />
+    </div>
 
 </div>

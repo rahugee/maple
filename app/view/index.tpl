@@ -16,7 +16,8 @@
                 COVER_PATH : '{$context_path}/static/cover/',
                 USER_LINK : "/user/",
                 STORY_LINK : "/story/",
-                DP_PATH : "{$context_path}/static/pic_authors/"
+                DP_PATH : "{$context_path}/static/pic_authors/",
+                COMMENTS_PAER_PAGE : 10
             }
         });
     </script>

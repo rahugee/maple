@@ -1,54 +1,66 @@
-
 <div class="list-group panel-default">
-	<ol class="breadcrumb list-group-item">
-		<li><a jqrouter href="#/stories">Stories</a></li>
-		<li><a jqrouter href="#/info">{{data.info.title}}</a></li>
-		<li><a jqrouter href="#/chapter/{{data.chapter.inorder}}">{{data.chapter.title}}</a></li>
-		<li class="active"><b>Comments</b></li>
-	</ol>
-	<div class="list-group-item story-stats maple-details">
-		<span class="btn btn-primary btn-xs pull-right" perm-user>Submmit</span>
-		
-		<span class="fa fa-pencil fa-lg"> {{data.chapter.penname}}</span> <span
-			class="fa fa-star fa-lg"> {{data.chapter.rating}}</span> <span
-			class="fa fa-comments fa-lg"> {{data.chapter.reviews}}</span>
+    <ol class="breadcrumb list-group-item">
+        <li><a jqrouter href="/stories">Stories</a></li>
+        <li><a jqrouter href="#/info">{{data.info.title}}</a></li>
+        <li><a jqrouter href="#/chapter/{{data.chapter.inorder}}">{{data.chapter.title}}</a></li>
+        <li class="active"><b>Comments</b></li>
+    </ol>
+    <div class="list-group-item story-stats maple-details">
+        <span class="fa fa-pencil fa-lg-x"> {{data.chapter.penname}}</span> <span
+            class="fa fa-star fa-lg-x"> {{data.chapter.rating}}</span> <span
+            class="fa fa-comments fa-lg-x"> {{data.chapter.reviews}}</span>
 
-		<div class="clearfix"></div>
+        <div class="clearfix"></div>
 		<span class="btn btn-link btn-sm"
-			style="margin-top: 0px; float: left; padding: 0px" title="Categories">
+              style="margin-top: 0px; float: left; padding: 0px" title="Categories">
 		</span>
-		
-	</div>
-
-
-	<div perm-user data-example-id="textarea-form-control"
-		class="bs-example list-group-item ">
-		<form>
-			<textarea placeholder="Enter Comment" rows="3" class="form-control" style="resize:none"
-				style="width: 734px; height: 71px;"></textarea>
-		</form>
-	</div>
-
-	<!-- for(var i in data.comments){ var comment = data.comments[i]; -->
-	<div class="list-group-item text-left">
+    </div>
+    <div>
+        <!-- if(!data.comments  || data.comments.length==0){ -->
+        <div class="list-group-item text-left">
+            <i>No comment yet, be first one to comment</i>
+        </div>
+        <!-- } else { for(var i in data.comments){ var comment = data.comments[i]; -->
+        <div class="list-group-item text-left">
 		<span class="pull-right text-muted"> <time class="subtext"
-				datetime="{{(new Date(comment.date*1000)).toDateString()}}">
-				{{(new Date(comment.date*1000)).toDateString()}}</time> <span
-			class="text-muted label label-success " title="rating"> <b>&nbsp;{{comment.rating}}</b>
+                                                   datetime="{{(new Date(comment.date*1000)).toDateString()}}">
+            {{(new Date(comment.date*1000)).toDateString()}}
+        </time> <span
+                class="text-muted badge rating " title="rating"> <b>&nbsp;{{comment.rating}}</b>
 		</span>
-		</span> <span class="text-muted"> <a jqrouter
-			href='{{USER_LINK}}{{comment.uid}}/{{encodeURIComponent(comment.reviewer)}}'>
-				<strong>{{comment.reviewer}} </strong>
-		</a><i>&nbsp;on&nbsp; <a jqrouter
-				href='{{STORY_LINK}}{{comment.sid}}/#/chapter/{{comment.inorder}}'>
-					{{comment.title}} </a> &nbsp;from&nbsp; <a jqrouter
-				href='{{STORY_LINK}}{{comment.sid}}#/info'>
-					{{comment.story_title}} </a></i>
+		</span> <span class="text-muted">
+            <!-- if(comment.uid>0) { -->
+            <a jqrouter
+               href='{{USER_LINK}}{{comment.uid}}/{{encodeURIComponent(comment.reviewer)}}'>
+                <strong>{{comment.reviewer}} </strong>
+            </a>
+            <!-- } else { -->
+            <strong>{{comment.reviewer}} </strong>
+            <!-- } -->
+
+            <i>&nbsp;on&nbsp; <a jqrouter
+                                 href='{{STORY_LINK}}{{comment.sid}}/#/chapter/{{comment.inorder}}'>
+                {{comment.title}} </a> &nbsp;from&nbsp; <a jqrouter
+                                                           href='{{STORY_LINK}}{{comment.sid}}#/info'>
+                {{comment.story_title}} </a></i>
 		</span>
-		<div class="clearfix"></div>
-		<br />
-		<div class="clearfix">{{comment.review}}</div>
-		<div class="clearfix"></div>
-	</div>
-	<!--  } -->
+
+            <div class="clearfix"></div>
+            <br/>
+
+            <div class="clearfix">{{comment.review}}</div>
+            <div class="clearfix"></div>
+        </div>
+        <!--  } } -->
+        <div class="list-group-item story-stats maple-details">
+            <a jqrouter href="#/comments/{{data.chapter.inorder}}/{{data.chapter.chapid}}"
+               class="fa fa-comments fa-lg-x"> <strong>{{data.chapter.reviews}}</strong> comments</a>
+
+            <p class="comments-pagination-here pull-right"></p>
+        </div>
+        <div class="list-group-item maple-details">
+            <include src="chapter_comment.html" data={}/>
+        </div>
+    </div>
+
 </div>

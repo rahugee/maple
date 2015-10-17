@@ -1,9 +1,12 @@
 @import "external/bootstrap/css/bootstrap.min.css";
 @import "external/bootswatch/assets/css/bootswatch.min.css";
+@import "external/components/font-awesome/css/font-awesome.min.css";
 
 @import "external/components/spamjs-navbar/boot.navbar.css";
+@import "external/components/normalize-css/normalize.css";
 @import "tags/profile.css";
 @import "web2files/searchbar/searchbar.css";
+@import "web2files/story/story.css";
 
 body {
     min-height: 2000px;

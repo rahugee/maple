@@ -24,7 +24,9 @@
     "typeahead.js": "latest",
     "bootstrap-social": "latest",
     "spamjs-bootconfig": "latest",
-    "spamjs-navbar": "latest"
+    "spamjs-navbar": "latest",
+    "bootpag": "~1.0.7",
+    "normalize-css": "normalize.css#~3.0.3"
   },
   "resolutions": {
     "jsutils-file": "~0.0.8",

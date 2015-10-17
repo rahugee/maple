@@ -83,10 +83,10 @@ namespace app\controller {
          * @RequestMapping(url="json/view_comments",type=json)
          * @RequestParams(true)
          */
-        public function viewComments($sid = 0, $chapid = NULL)
+        public function viewComments($sid = 0, $chapid = NULL, $page=NULL)
         {
             if ($chapid != NULL && is_numeric($chapid)) {
-                return \app\model\Reviews::getByChapter($sid, $chapid);
+                return \app\model\Reviews::getByChapter($sid, $chapid, $page);
             } else {
                 return null;
             }

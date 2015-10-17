@@ -1,0 +1,24 @@
+.chapter-pagination-here .pagination, .comments-pagination-here .pagination {
+    margin: 0px!important;
+}
+.chapter-pagination-here .pagination a,.comments-pagination-here .pagination a{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.story-stats {
+    height: 40px; padding-bottom: 0; padding-top: 10px;
+}
+.story-stats .fa {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+}
+
+.badge.rating {
+    background-color: #f90!important;
+}
+.text-reading {
+    background-color: #fEFEFE!important;
+    line-height: 25px;
+}

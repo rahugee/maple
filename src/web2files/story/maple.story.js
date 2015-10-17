@@ -12,13 +12,13 @@ define({
             var self = this;
             SERVER.get("view_story", {
                 sid: self.options.sid
-            }).done(function (story) {
-                self.router = jqrouter.bind(self);
-                self.story = story;
-                console.warn("----", self.options.sid, story)
+            }).done(function (storyResponse) {
+                self.router = jqrouter.instance().bind(self);
+                self.story = storyResponse;
+                console.warn("---->>>", self.options.sid, storyResponse)
                 self.$$.loadTemplate(self.path('story.html'), {
-                    info: story.info,
-                    stats: story.stats
+                    info: storyResponse.info,
+                    stats: storyResponse.stats
                 }).done(function () {
                     self.setView();
                 });
@@ -32,19 +32,34 @@ define({
                     data: self.story
                 });
             }).on("#/chapter/{cid}", function (e) {
+                console.error("-----", e)
                 self.$$.find(".read_section").loadTemplate({
                     src: self.path("chapter_read.html"),
                     data: {chapter: self.story.chapters[e.params.cid - 1], info: self.story.info}
+                }).done(function () {
+                    self.$$.find('.chapter-pagination-here').bootpag({
+                        total: self.story.chapters.length,          // total pages
+                        page: e.params.cid,            // default page
+                        maxVisible: 3,     // visible pagination
+                        leaps: false,         // next/prev leaps through maxVisible,
+                        prev: "Prev", next: "Next",
+                       // firstLastUse: true,
+                       // first: "First", last: "Last",
+                        wrapClass : 'pagination pagination-sm'
+                    }).on("page", function (event, num) {
+                        self.router.go("#/chapter/" + num);
+                    });
                 });
-            }).on("#/comments/{cid}/{chapid}", function (e) {
-
-                chapterComments.load("comments:" + e.params.chapid, function () {
+            }).on("#/comments/{cid}/{chapid}/*", function (e) {
+                var lastPage = Math.ceil(self.story.chapters[e.params.cid - 1].reviews / COMMENTS_PAER_PAGE);
+                var thisPage = e.params._ || lastPage;
+                chapterComments.load("comments:" + e.params.chapid + ":" + e.params._, function () {
                     return SERVER.get("view_comments", {
                         sid: self.options.sid,
-                        chapid: e.params.chapid
+                        chapid: e.params.chapid,
+                        page: thisPage - 1
                     });
                 }, true).progress(function (comments) {
-                    console.info("rendering..", comments)
                     self.$$.find(".read_section").loadTemplate({
                         src: self.path("chapter_discuss.html"),
                         data: {
@@ -52,10 +67,27 @@ define({
                             chapter: self.story.chapters[e.params.cid - 1],
                             info: self.story.info
                         }
+                    }).done(function () {
+                        console.error("hi", self.$$.find(".comments-pagination-here"))
+                        self.$$.find(".comments-pagination-here").bootpag({
+                            total : lastPage,
+                            page : thisPage,
+                            maxVisible: 5,     // visible pagination
+                            leaps: false,         // next/prev leaps through maxVisible,
+                            firstLastUse: true,
+                            first: "First", last: "Last"
+                        }).on("page", function (event, num) {
+                            self.router.go("#/comments/" + e.params.cid + "/" + e.params.chapid + "/" + num);
+                        });
                     });
-                });
+                })
             }).defaultRoute("#/info");
         },
+        comment_pagination: function () {
+
+        }
+
+        ,
         _remove_: function () {
             this.router.off();
         }
