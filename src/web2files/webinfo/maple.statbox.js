@@ -35,12 +35,9 @@ define({
                 });
             }
         },
-        item_selected: function (e, target) {
-            //this.set_cats(this.selected);
-        },
         set_cats: function (selected) {
             var self = this;
-            self.selected = selected;
+            self.selected = selected || [];
             self.$$.find("[value]").removeClass("list-group-item-info");
             self.selected.map(function (cat) {
                 self.$$.find("[value='" + cat + "']").addClass("list-group-item-info");

@@ -32,21 +32,12 @@
 					class="btn btn-default btn-xs jqrouter">Recently Discussed</a>
 			</div>
 		</div>
+        <div class="search_result_wrapper">
+		    <include src="storieslist.html" data={stories:data.stories} />
+        </div>
 
-		<include src="storieslist.html" data={stories:data.stories} />
 
-		<div id="stories" class="collapse">
-
-			<a jqrouter-param="languages" class="list-group-item"><span class="badge">14</span>
-				Active item</a> <a href="#" jqrouter-param="languages" class="list-group-item"><span
-				class="badge">3</span> Second item</a> <a href="#"
-				class="list-group-item"><span class="badge">25</span> Third item</a>
-			<a jqrouter-param="languages" class="list-group-item"><span class="badge">14</span>
-				Active item</a> <a jqrouter-param="languages" class="list-group-item"><span
-				class="badge">3</span> Second item</a>
-		</div>
-
-		<button class="btn btn-default btn-sm btn-block"
+		<button class="btn btn-default btn-sm btn-block search-stories-more" data-page="0"
 			data-toggle="collapse" data-target="#stories">
 			More <span class="caret"></span>
 		</button>

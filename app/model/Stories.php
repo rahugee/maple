@@ -98,7 +98,7 @@ namespace app\model {
 				FROM (" . TABLE_AUTHORS . " as authors, " . TABLE_STORIES . " as stories)
 				LEFT JOIN " . TABLE_COAUTHORS . " as coauth ON coauth.sid = stories.sid
 				WHERE authors.uid = stories.uid AND stories.validated > 0
-				GROUP BY stories.sid ORDER BY " . $order_by . " " . $order . " LIMIT $offset, 50"
+				GROUP BY stories.sid ORDER BY " . $order_by . " " . $order . " LIMIT $offset, 25"
             );
             return $this->resolveValues($stories);
         }
@@ -116,7 +116,7 @@ namespace app\model {
 				WHERE authors.uid = stories.uid %s %s
 				GROUP BY stories.sid
 				HAVING Relevance >= " . $this->RELEVANCE . "
-				ORDER BY Relevance desc, " . $order_by . " " . $order . " LIMIT $offset, 50",
+				ORDER BY Relevance desc, " . $order_by . " " . $order . " LIMIT $offset, 25",
                 $title, $this->filter_cat, $this->filter_clas
             );
             //	print_r($stories);
@@ -139,7 +139,7 @@ namespace app\model {
 				%%s %s) AS me
 				GROUP BY me.sid 
 				HAVING Relevance >= " . $this->RELEVANCE . "
-				ORDER BY max_rel desc ,Relevance desc, " . $order_by . " DESC LIMIT $offset, 50
+				ORDER BY max_rel desc ,Relevance desc, " . $order_by . " DESC LIMIT $offset, 25
 				",
                 $title, $this->filter_cat, $this->filter_clas
             );
@@ -162,7 +162,7 @@ namespace app\model {
 				%s %s) AS me
 				GROUP BY me.sid
 				HAVING Relevance >= " . $this->RELEVANCE . "
-				ORDER BY Relevance desc ,s_rel desc,c_rel desc, " . $order_by . " DESC LIMIT $offset, 50
+				ORDER BY Relevance desc ,s_rel desc,c_rel desc, " . $order_by . " DESC LIMIT $offset, 25
 				",
                 $title, $title, $this->filter_cat, $this->filter_clas
             );

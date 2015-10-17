@@ -1,8 +1,8 @@
 define({ 
 	name : "maple.storieslist",
 	extend : "spamjs.view",
-	modules : ["DataService","jqrouter","maple.webinfo","jqbus"]
-}).as(function(storieslist,DataService,ROUTER,WEB_INFO,jqbus){
+	modules : ["DataService","jqrouter","maple.webinfo"]
+}).as(function(storieslist,DataService,ROUTER,WEB_INFO){
 	
 	return {
 		globalEvents : {
@@ -15,13 +15,13 @@ define({
 			"?type=" : "type_change",
 			"?search=" : "search_text_changed"
 		} ,
-		evens : {
+		events : {
+			"click .search-stories-more" : "search_more"
 		},
 		_init_ : function(){
 			this.selected = [];
 			var self = this;
 			self.router = ROUTER.instance().bind(self);
-			self.bus =  jqbus.instance().bind(self);
 
 			WEB_INFO.getClasses().done(function(info){
 				self.langs = info.langs
@@ -63,6 +63,7 @@ define({
 		},
 		on_filter_changed : debounce(function(){
 			var self = this;
+			self.filter.page = 0;
 			return DataService.get("storieslist",self.filter).then(function(resp){
 				return self.$$.loadTemplate(self.path("search_result.html"),{
 					stories :resp,
@@ -75,9 +76,20 @@ define({
 				});
 			});
 		},600),
+		search_more : function(e, target,data){
+			var self =  this;
+			var $newResults = jQuery("<div/>");
+			self.filter.page = ++data.page;
+			$newResults.loadTemplate(
+				self.path("storieslist.html"),
+				DataService.get("storieslist",self.filter).then(function(resp){
+					return { stories : resp }
+				})
+			);
+			self.$$.find(".search_result_wrapper").append($newResults)
+		},
 		_remove_ : function(){
 			this.router.off();
-			this.bus.off();
 		}
 	};
 	

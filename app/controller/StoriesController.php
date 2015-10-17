@@ -41,19 +41,20 @@ namespace app\controller {
          * @RequestParams(true)
          */
         public function searchStories($search = "", $order_by = "updated", $search_by = "title",
-                                      $categories = array(), $language = "", $type = "")
+                                      $categories = array(), $language = "", $type = "", $page=0)
         {
 
+            $offset = $page*50;
             $stories = new Stories ();
             $stories->RELEVANCE = empty($search) ? 0 : 0.1;
             $stories->setCategories($categories);
             $stories->setClasses($type, $language);
             if ($search_by == 'title') {
-                $stories_results = $stories->searchByTitle($search, 0, $order_by);
+                $stories_results = $stories->searchByTitle($search, $offset, $order_by);
             } else if ($search_by == 'text') {
-                $stories_results = $stories->searchByText($search, 0, $order_by);
+                $stories_results = $stories->searchByText($search, $offset, $order_by);
             } else {
-                $stories_results = $stories->searchByAll($search, 0, $order_by);
+                $stories_results = $stories->searchByAll($search, $offset, $order_by);
             }
 
             if (count($stories_results)) {
