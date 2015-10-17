@@ -10,7 +10,7 @@
             resourceUrl: '{$cdn_server}',
             resourceJson: "dist/resource.json",
             indexBundle: "maple/web2",
-            debugBundles: [],
+            debugBundles: ["maple/web2"],
             CONST : {
                 CONTEXT_PATH : '{$context_path}',
                 COVER_PATH : '{$context_path}/static/cover/',
