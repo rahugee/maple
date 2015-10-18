@@ -29,6 +29,15 @@ namespace app\controller {
             return array();
         }
 
+        /**
+         * @RequestMapping(url="json/logout",method="GET",type="json")
+         * @RequestParams(true)
+         */
+        public function loagout($model)
+        {
+            $this->user->unauth();
+            return null;
+        }
 
         /**
          * @RequestMapping(url="",method="GET",type="template")
@@ -36,10 +45,10 @@ namespace app\controller {
          */
         public function renderTemplate($model)
         {
-            $this->user->validate();
-            if (!$this->user->isValid()) {
-                $this->user->auth(null, null);
-            }
+            //$this->user->validate();
+//            if (!$this->user->isValid()) {
+//                $this->user->auth(null, null);
+//            }
             $model->assign("context_path", Webapp::$BASE_URL);
             $model->assign("cdn_server", \Config::get("CDN_SERVER").Webapp::$BASE_URL . "/");
             return "index";

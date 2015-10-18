@@ -5,10 +5,10 @@ define({
 }).as(function (statbox, WEBINFO, ROUTER) {
 
     return {
-        routerEvents : {
-            "?categories=" : "categories_change"
+        routerEvents: {
+            "?categories=": "categories_change"
         },
-        categories_change : function(){
+        categories_change: function () {
             this.selected = ROUTER.getQueryParam('categories') || [];
             this.set_cats(this.selected);
         },
@@ -17,22 +17,25 @@ define({
             var self = this;
             console.error("WEBINFO", WEBINFO)
             if (this.options.type === "CATEGORIES") {
-                WEBINFO.getCategories().done(function (resp) {
-                    var cats = Object.keys(resp).map(function (catid) {
-                        return resp[catid];
-                    }).sort(function (cat1, cat2) {
-                        return cat1.info.numitems - 0 < cat2.info.numitems - 0
-                    });
-                    self.view("catpanal.html", cats).done(function () {
+                self.$$.loadTemplate(
+                    self.path("catpanal.html"),
+                    WEBINFO.getCategories().then(function (resp) {
+                        return Object.keys(resp).map(function (catid) {
+                            return resp[catid];
+                        }).sort(function (cat1, cat2) {
+                            return cat1.info.numitems - 0 < cat2.info.numitems - 0
+                        });
+                    })
+                ).done(function () {
                         self.set_cats(self.selected);
                     })
-                });
+                ;
             } else {
-                WEBINFO.getStats().done(function (resp) {
-                    self.view("statbox.html", resp).done(function () {
-                        //console.error("----",self.$$.html());
-                    })
-                });
+                self.$$.loadTemplate(
+                    self.path("statbox.html"),
+                    WEBINFO.getStats()
+                );
+
             }
         },
         set_cats: function (selected) {

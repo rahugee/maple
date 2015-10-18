@@ -20,7 +20,8 @@
 	"autoload": {
 	  "psr-4": {
 		"Maple\\": "app/",
-		"app\\model\\": "app/model/"
+		"app\\model\\": "app/model/",
+		"app\\utils\\": "app/utils/"
 	  }
 	}
 }

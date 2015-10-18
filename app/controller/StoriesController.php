@@ -107,6 +107,22 @@ namespace app\controller {
             }
 
         }
+
+        /**
+         * @RequestMapping(url="json/comment_add",type=json)
+         * @RequestParams(true)
+         */
+        public function addComment($sid,$chapid,$review,$rating)
+        {
+            $this->user->validate();
+            if($this->user->isValid() && false){
+                $this->user->uid;
+                //echo   \app\utils\Maple::$ALLOWED_TAGS;
+                \app\model\Reviews::addComment($sid,$chapid, $this->user->uid, $this->user->uname,$review,$rating);
+            }
+            return array("name"=>$this->user->uname, "valid"=> $this->user->isValid(), "uid"=>$this->user->uid,
+                "auth"=>$_SERVER['PHP_AUTH_USER']);
+        }
     }
 }
 

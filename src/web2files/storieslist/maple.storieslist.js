@@ -64,16 +64,19 @@ define({
 		on_filter_changed : debounce(function(){
 			var self = this;
 			self.filter.page = 0;
-			return DataService.get("storieslist",self.filter).then(function(resp){
-				return self.$$.loadTemplate(self.path("search_result.html"),{
-					stories :resp,
-					langs : self.langs,
-					language : self.filter.language,
-					types : self.types,
-					type : self.filter.type
-				}).done(function(){
-					self.set_tab(self.filter.order_by);
-				});
+			return self.$$.loadTemplate(
+				self.path("search_result.html"),
+				DataService.get("storieslist",self.filter).then(function(resp){
+					return {
+						stories :resp,
+						langs : self.langs,
+						language : self.filter.language,
+						types : self.types,
+						type : self.filter.type
+					};
+				})
+			).done(function(){
+				self.set_tab(self.filter.order_by);
 			});
 		},600),
 		search_more : function(e, target,data){

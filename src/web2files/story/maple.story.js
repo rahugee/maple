@@ -7,6 +7,7 @@ define({
     var chapterComments = CACHEUTIL.instance("chapterComments");
 
     return {
+        events : {"click .submit_comment" : "submit_comment"},
         _init_: function () {
             console.error("----", this.options.sid);
             var self = this;
@@ -83,11 +84,13 @@ define({
                 })
             }).defaultRoute("#/info");
         },
-        comment_pagination: function () {
-
-        }
-
-        ,
+        submit_comment :  function(){
+            SERVER.post("comment_add", {
+                sid: this.options.sid,
+                chapid: 0,
+                rating: 3, review : "WOWW"
+            });
+        },
         _remove_: function () {
             this.router.off();
         }

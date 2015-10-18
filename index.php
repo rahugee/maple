@@ -5,7 +5,6 @@ ini_set('error_reporting', E_ALL);
 error_reporting(E_ALL);
 error_reporting(E_ALL & ~E_DEPRECATED);
 
-
 require("./lib/autoload.php");
 require_once("./lib/rudrax/boot/RudraX.php");
 

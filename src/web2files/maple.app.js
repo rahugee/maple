@@ -15,7 +15,8 @@ define({
 			"click a[jqrouter]" : "routerNavigation",
 			"change [jqrouter-param]"  :"routerQueryParamChange",
 			"click a[jqrouter-param]"  :"routerQueryParamChange",
-			"click a[jqrouter-params]"  :"routerQueryParamUpdate"
+			"click a[jqrouter-params]"  :"routerQueryParamUpdate",
+			"click .logout" : "logout"
 		},
 		routerEvents : {
 			"/boot/*" : "openDevSection",
@@ -85,6 +86,11 @@ define({
 			}
 			this.router.setQueryParam(param, selected);
 			return preventPropagation(e);
+		},
+		logout : function(){
+			module("DataService", function(DataService){
+				DataService.get("logout");
+			})
 		},
 		_remove_ : function(){
 			this.router.off();

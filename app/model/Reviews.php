@@ -9,6 +9,8 @@
 namespace app\model {
 
 	use \app\service\DBService;
+	use \app\utils\TextUtils;
+	use \app\utils\Maple;
 
 	class Reviews
 	{
@@ -72,6 +74,21 @@ namespace app\model {
 				"SELECT *
 				FROM all_ratings
 				WHERE chapid=%d AND uid=%d", $chapid, $uid
+			);
+			if ($review == NULL) return 0;
+			else return $review->rating;
+		}
+
+
+		public static function addComment($sid, $chapid, $uid, $reviewer,$review,$rating)
+		{
+
+			echo  Maple::$ALLOWED_TAGS;
+			$RDb = DBService::getDB();
+			$review = TextUtils::format_story(strip_tags(TextUtils::descript($_POST['review']), Maple::$ALLOWED_TAGS));
+			$RDb->update(
+				"INSERT INTO fanfiction_reviews (item, type, reviewer, review, rating, date, uid, chapid)
+				VALUES ('$sid', 'ST', '$reviewer', '$review', '$rating', now(), '".$uid."', '$chapid')"
 			);
 			if ($review == NULL) return 0;
 			else return $review->rating;
