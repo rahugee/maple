@@ -49,8 +49,15 @@ namespace app\controller {
 //            if (!$this->user->isValid()) {
 //                $this->user->auth(null, null);
 //            }
-            $model->assign("context_path", Webapp::$BASE_URL);
-            $model->assign("cdn_server", \Config::get("CDN_SERVER").Webapp::$BASE_URL . "/");
+            $model->assign("CONTEXT_PATH", Webapp::$BASE_URL);
+            $model->assign("CDN_SERVER", \Config::get("CDN_SERVER").Webapp::$BASE_URL . "/");
+            $model->assign("STATIC_SERVER", \Config::get("STATIC_SERVER"));
+            if(RX_MODE_DEV){
+                $model->assign("VERSION", microtime(true));
+            } else {
+                $model->assign("VERSION", RELOAD_VERSION);
+            }
+
             return "index";
         }
 

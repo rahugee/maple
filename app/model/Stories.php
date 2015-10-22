@@ -88,6 +88,25 @@ namespace app\model {
             return $this->resolveValues($stories);
         }
 
+        public function byActor($charid, $offset = 0)
+        {
+            $RDb = DBService::getDB();
+            $order_by = 'ORDER BY title';
+            $stories = $RDb->fetchAll(
+                "SELECT stories.*, penname, UNIX_TIMESTAMP(stories.date) as date,
+				UNIX_TIMESTAMP(stories.updated) as updated
+				FROM (" . TABLE_AUTHORS . " as authors, " . TABLE_STORIES . " as stories)
+				LEFT JOIN " . TABLE_COAUTHORS . " as coauth ON coauth.sid = stories.sid
+				WHERE authors.uid = stories.uid AND stories.validated > 0
+				AND (stories.charid like '%," . $charid . ",%'
+                    OR stories.charid like '" . $charid . ",%'
+                    OR stories.charid like '%," . $charid . "'
+                    OR stories.charid like '" . $charid . "')
+				GROUP BY stories.sid " . $order_by . " LIMIT $offset, 500"
+            );
+            return $this->resolveValues($stories);
+        }
+
         public function get($offset = 0, $order_by = 'updated', $order = 'DESC')
         {
             $RDb = DBService::getDB();

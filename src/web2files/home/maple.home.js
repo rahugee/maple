@@ -2,7 +2,7 @@ define({
 	name : 'maple.home',
 	extend : 'spamjs.view',
 	//modules : ['maple.statbox',,'-maple.storieslist']
-	using : ['maple.statbox','maple.searchbar','maple.storieslist']
+	using : ['maple.statbox','maple.searchbar','maple.storieslist.search']
 }).as(function(home,STATBOX,SEARCHBAR,STORIESLIST){
 	
 	home._init_ = function(){

@@ -20,10 +20,10 @@ define({
                 self.$$.loadTemplate(
                     self.path("catpanal.html"),
                     WEBINFO.getCategories().then(function (resp) {
-                        return Object.keys(resp).map(function (catid) {
+                       return Object.keys(resp).map(function (catid) {
                             return resp[catid];
                         }).sort(function (cat1, cat2) {
-                            return cat1.info.numitems - 0 < cat2.info.numitems - 0
+                            return cat1.info.displayorder - cat2.info.displayorder
                         });
                     })
                 ).done(function () {

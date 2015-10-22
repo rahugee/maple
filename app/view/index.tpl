@@ -1,22 +1,24 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script src="{$cdn_server}dist/bootloader_bundled/webmodules.bootloader.js">
+    <script src="{$CDN_SERVER}dist/bootloader_bundled/webmodules.bootloader.js">
         window.bootloader({
             debug: false,
-            version: (new Date()).getTime(),
-            appContext: '{$context_path}/',
-            resourceDir: "", //'{$context_path}',
-            resourceUrl: '{$cdn_server}',
+            version: {$VERSION},
+            appContext: '{$CONTEXT_PATH}',
+            resourceDir: "", //'{$CONTEXT_PATH}',
+            resourceUrl: '{$CDN_SERVER}',
             resourceJson: "dist/resource.json",
             indexBundle: "maple/web2",
             debugBundles: ["maple/web2"],
             CONST : {
-                CONTEXT_PATH : '{$context_path}',
-                COVER_PATH : '{$context_path}/static/cover/',
+                CONTEXT_PATH : '{$CONTEXT_PATH}',
+                STATIC_SERVER : '{$STATIC_SERVER}',
+                COVER_PATH : '{$STATIC_SERVER}/static/cover/',
+                ACTOR_PIC_PATH : '{$STATIC_SERVER}/static/actors/',
+                DP_PATH : "{$STATIC_SERVER}/static/pic_authors/",
                 USER_LINK : "/user/",
                 STORY_LINK : "/story/",
-                DP_PATH : "{$context_path}/static/pic_authors/",
                 COMMENTS_PAER_PAGE : 10
             }
         });

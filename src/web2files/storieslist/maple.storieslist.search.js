@@ -1,5 +1,5 @@
 define({ 
-	name : "maple.storieslist",
+	name : "maple.storieslist.search",
 	extend : "spamjs.view",
 	modules : ["DataService","jqrouter","maple.webinfo"]
 }).as(function(storieslist,DataService,ROUTER,WEB_INFO){
@@ -24,10 +24,10 @@ define({
 			self.router = ROUTER.instance().bind(self);
 
 			WEB_INFO.getClasses().done(function(info){
-				self.langs = info.langs;
-				self.types = info.types;
+				self.langs = info.langs
+				self.types = info.types
 				self.read_filter();
-			});
+			})
 		},
 		order_by_change : function(){
 			this.filter.order_by = this.router.getQueryParam("order_by");
@@ -47,7 +47,7 @@ define({
 			this.on_filter_changed();
 		},
 		search_text_changed : function(event,target,data){
-			this.filter.search = this.router.getQueryParam("search");
+			this.filter.search = this.router.getQueryParam("search");;
 			this.on_filter_changed();
 		},
 		read_filter : function(){
@@ -66,20 +66,32 @@ define({
 			self.filter.page = 0;
 			return self.$$.loadTemplate(
 				self.path("search_result.html"),
-				jQuery.when(self.options.stories).then(function(stories){
-					console.error(stories[0]);
+				DataService.get("storieslist",self.filter).then(function(resp){
 					return {
-						stories :stories,
+						stories :resp,
 						langs : self.langs,
 						language : self.filter.language,
 						types : self.types,
-						type : self.filter.type
+						type : self.filter.type,
+						hasMore : true
 					};
 				})
 			).done(function(){
 				self.set_tab(self.filter.order_by);
 			});
 		},600),
+		search_more : function(e, target,data){
+			var self =  this;
+			var $newResults = jQuery("<div/>");
+			self.filter.page = ++data.page;
+			$newResults.loadTemplate(
+				self.path("storieslist.html"),
+				DataService.get("storieslist",self.filter).then(function(resp){
+					return { stories : resp }
+				})
+			);
+			self.$$.find(".search_result_wrapper").append($newResults)
+		},
 		_remove_ : function(){
 			this.router.off();
 		}

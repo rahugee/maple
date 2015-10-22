@@ -4,6 +4,8 @@ define({
 	modules : ["jqrouter",'spamjs.navbar']
 }).as(function(app,jqrouter,navbar){
 
+	_importStyle_('maple/style');
+	
 	var CONST = bootloader.config().CONST;
 	for(var CONST_KEY in CONST){
 		window[CONST_KEY] = CONST[CONST_KEY];
@@ -12,6 +14,11 @@ define({
 	jqrouter.start(bootloader.config().appContext);
 	return {
 		events : {
+			"click [jqr-url]" : "routerNavigation",
+			"click [jqr-click-param]"  :"routerQueryParamChange",
+			"click [jqr-click-params]"  :"routerQueryParamUpdate",
+			"change [jqr-change-param]"  :"routerQueryParamChange",
+			"change [jqr-change-params]"  :"routerQueryParamUpdate",
 			"click a[jqrouter]" : "routerNavigation",
 			"change [jqrouter-param]"  :"routerQueryParamChange",
 			"click a[jqrouter-param]"  :"routerQueryParamChange",
@@ -20,21 +27,22 @@ define({
 		},
 		routerEvents : {
 			"/boot/*" : "openDevSection",
+			"/boot/config/" : "openDevSection",
 			"/stories/*" : "maple.home",
 			"/story/{sid}/*" : "maple.story",
-			"/user/{uid}/*" : 'maple.author'
+			"/user/{uid}/*" : 'maple.author',
+			"/actor/{aid}/*" : 'maple.actor.profile',
+			"/actors/*" : "maple.actor.search"
 		},
 		_init_ : function(){
 			var self = this;
-			_importStyle_('maple/style');
-			
 			self.add(navbar.instance({
 				id : 'topbar',
 				position : 'fixed-top', 
 				fluid : true,
 				view : self.path("topbar/topbar.html")
 			}));
-			console.error("jqrouter");	
+			console.error("jqrouter---");
 			self.router = jqrouter.instance().bind(this);
 			self.router.otherwise("/stories")
 		},
@@ -53,7 +61,7 @@ define({
 			var self = this;
 			module("spamjs.bootconfig", function(myModule) {
 				self.add(myModule.instance({
-					id: "bootconfig",
+					id: "main_module",
 					routerBase: "/boot/"
 				}));
 			});
@@ -66,14 +74,18 @@ define({
 			return preventPropagation(e);
 		},
 		routerQueryParamChange : function(e,target){
-			var param = target.getAttribute("jqrouter-param");
+			var param = target.getAttribute("jqr-change-param") ||
+				target.getAttribute("jqr-click-param") ||
+				target.getAttribute("jqrouter-param");
 			if(param){
 				jqrouter.setQueryParam(param,target.value || target.getAttribute("value"));
 			}
 			return preventPropagation(e);
 		},
 		routerQueryParamUpdate : function(e,target){
-			var param = target.getAttribute("jqrouter-params");
+			var param = target.getAttribute("jqr-change-params") ||
+				target.getAttribute("jqr-click-params") ||
+				target.getAttribute("jqrouter-params");
 			if(param){
 				var selectedVal = target.value || target.getAttribute("value");
 				var selected = this.router.getQueryParam(param) || [];

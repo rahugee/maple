@@ -1,0 +1,32 @@
+<!-- for(var i in data){ var actor = data[i] -->
+<div class="col-md-4">
+
+    <div class="well well-sm">
+        <div class="media">
+            <a class="pull-left" jqr-url href="/actor/{{actor.charid}}"
+               > <img class="media-object" style="height: 80px"
+                            src="{{ACTOR_PIC_PATH}}/pic-{{(actor.charid % 10)*2}}.jpg" />
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">{{actor.charname}}</h4>
+                <p>
+                    <span class="label label-default">{{actor.sex ? "Male" : "Female"}}</span> <span
+                        class="label label-danger">{{actor.hearts}} <span
+                        class="glyphicon glyphicon-heart red"> </span>
+				</span>
+                </p>
+                <p>{{actor.status}}</p>
+                <p class="hide">
+                    <a href="#" class="btn btn-xs btn-default"><span
+                            class="glyphicon glyphicon-comment"></span> Message</a> <a href="#"
+                                                                                       class="btn btn-xs btn-default"><span
+                        class="glyphicon glyphicon-heart"></span> Favorite</a> <a href="#"
+                                                                                  class="btn btn-xs btn-default"><span
+                        class="glyphicon glyphicon-ban-circle"></span> Unfollow</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- } -->
