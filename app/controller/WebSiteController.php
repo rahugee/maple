@@ -52,7 +52,7 @@ namespace app\controller {
             $model->assign("CONTEXT_PATH", Webapp::$BASE_URL);
             $model->assign("CDN_SERVER", \Config::get("CDN_SERVER").Webapp::$BASE_URL . "/");
             $model->assign("STATIC_SERVER", \Config::get("STATIC_SERVER"));
-            if(RX_MODE_DEV){
+            if(defined("RX_MODE_DEV") && RX_MODE_DEV){
                 $model->assign("VERSION", microtime(true));
             } else {
                 $model->assign("VERSION", RELOAD_VERSION);
