@@ -114,7 +114,7 @@ namespace app\controller {
          */
         public function addComment($sid,$chapid,$review,$rating)
         {
-            $this->user->validate();
+            $this->user->validateUser(true);
             if($this->user->isValid()){
                 $this->user->uid;
                 return \app\model\Reviews::addComment($sid,$chapid, $this->user->uid, $this->user->getPenname(),$review,$rating);

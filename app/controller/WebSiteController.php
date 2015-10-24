@@ -30,16 +30,6 @@ namespace app\controller {
         }
 
         /**
-         * @RequestMapping(url="json/logout",method="GET",type="json")
-         * @RequestParams(true)
-         */
-        public function loagout($model)
-        {
-            $this->user->unauth();
-            return null;
-        }
-
-        /**
          * @RequestMapping(url="",method="GET",type="template")
          * @RequestParams(true)
          */
@@ -55,6 +45,8 @@ namespace app\controller {
 
             if(defined("WEBSITE_TITLE") && WEBSITE_TITLE){
                 $model->assign("WEBSITE_TITLE", WEBSITE_TITLE);
+            } else {
+                $model->assign("WEBSITE_TITLE", "Stories");
             }
 
             if(defined("RX_MODE_DEV") && RX_MODE_DEV){

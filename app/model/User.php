@@ -10,6 +10,7 @@
 namespace app\model {
 
     use \app\service\DBService;
+    use \app\utils\Maple;
 
     /**
      * Description of User, it basically extends AbstractUser and implemetns atleast two methods
@@ -31,18 +32,6 @@ namespace app\model {
         public function getPenname()
         {
             return $this->get('penname');
-        }
-
-        public function basicAuthNo()
-        {
-            $realm = 'Maple ' . microtime(true);
-            header('WWW-Authenticate: Basic realm="' . $realm . '"');
-            header('HTTP/1.0 401 Unauthorized');
-            echo "You need to enter a valid username and password.";
-            session_start();
-            session_unset();
-            session_destroy();
-            exit;
         }
 
         public function auth($username, $passowrd)
@@ -67,18 +56,38 @@ namespace app\model {
                     $this->uname = $row->penname;
                     $this->uid = $row->uid;
                     $this->setValid();
+
+                    if(isset($_POST['cookiecheck'])) {
+                        setcookie(Maple::$SITE_KEY."_useruid",$row->uid, time()+60*60*24*30, "/");
+                        setcookie(Maple::$SITE_KEY."_salt", md5($row->email+$encryptedpassword),  time()+60*60*24*30, "/");
+                    }
+                    if(!isset($_SESSION)) session_start( );
+                    $_SESSION[Maple::$SITE_KEY."_useruid"] = $row->uid;
+                    $_SESSION[Maple::$SITE_KEY."_salt"] = md5($row->email+$encryptedpassword);
                 }
                 return true;
             }
         }
 
-        public function validate()
+        public function oldValidation(){
+            if (!empty($_COOKIE[Maple::$SITE_KEY."_useruid"])) {
+                return true;
+            }
+            if(!empty($_SESSION[Maple::$SITE_KEY."_useruid"])){
+                return true;
+            }
+        }
+
+        public function validateUser($required=false)
         {
-            if (!parent::validate()) {
+            if (parent::validate() && $this->oldValidation()) {
+                //Save and get Othervalues
+                return true;
+            } else if($required){
                 $this->basicAuth();
                 header('X-auth-event : true');
             }
-            return true;
+            return false;
         }
 
         public function basicAuth()

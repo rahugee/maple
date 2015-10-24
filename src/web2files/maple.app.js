@@ -1,8 +1,8 @@
 define({
 	name : "maple.app",
 	extend : "spamjs.view",
-	modules : ["jqrouter",'spamjs.navbar']
-}).as(function(app,jqrouter,navbar){
+	modules : ["jqrouter",'spamjs.navbar','DataService']
+}).as(function(app,jqrouter,navbar,DataService){
 
 	_importStyle_('maple/style');
 	
@@ -23,7 +23,7 @@ define({
 			"change [jqrouter-param]"  :"routerQueryParamChange",
 			"click a[jqrouter-param]"  :"routerQueryParamChange",
 			"click a[jqrouter-params]"  :"routerQueryParamUpdate",
-			"click .logout" : "logout"
+			"click [jqr-api]" : "call_api"
 		},
 		routerEvents : {
 			"/boot/*" : "openDevSection",
@@ -38,11 +38,11 @@ define({
 			var self = this;
 			self.add(navbar.instance({
 				id : 'topbar',
-				position : 'fixed-top', 
+				position : 'fixed-top',
 				fluid : true,
-				view : self.path("topbar/topbar.html")
+				view : self.path("topbar/topbar.html"),
+				data : DataService.getUserDetails()
 			}));
-			console.error("jqrouter---");
 			self.router = jqrouter.instance().bind(this);
 			self.router.otherwise("/stories")
 		},
@@ -99,10 +99,10 @@ define({
 			this.router.setQueryParam(param, selected);
 			return preventPropagation(e);
 		},
-		logout : function(){
+		call_api : function(e,target,data){
 			module("DataService", function(DataService){
-				DataService.get("logout");
-			})
+				DataService.get(target.getAttribute("jqr-api"));
+			});
 		},
 		_remove_ : function(){
 			this.router.off();
