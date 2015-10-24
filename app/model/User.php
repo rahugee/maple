@@ -28,6 +28,10 @@ namespace app\model {
         {
             return $this->get('name');
         }
+        public function getPenname()
+        {
+            return $this->get('penname');
+        }
 
         public function basicAuthNo()
         {
@@ -59,6 +63,7 @@ namespace app\model {
                 } else {
                     $name = empty($row->realname) ? $row->penname : $row->realname;
                     $this->set('name', $name);
+                    $this->set('penname', $row->penname);
                     $this->uname = $row->penname;
                     $this->uid = $row->uid;
                     $this->setValid();

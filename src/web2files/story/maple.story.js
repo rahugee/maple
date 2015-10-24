@@ -52,8 +52,9 @@ define({
                     });
                 });
             }).on("#/comments/{cid}/{chapid}/*", function (e) {
-                var lastPage = Math.ceil(self.story.chapters[e.params.cid - 1].reviews / COMMENTS_PAER_PAGE);
+                var lastPage = Math.ceil(self.story.chapters[e.params.cid - 1].reviews / COMMENTS_PAER_PAGE) || 1;
                 var thisPage = e.params._ || lastPage;
+                self.options.chapid =  e.params.chapid;
                 chapterComments.load("comments:" + e.params.chapid + ":" + e.params._, function () {
                     return SERVER.get("view_comments", {
                         sid: self.options.sid,
@@ -64,7 +65,7 @@ define({
                     self.$$.find(".read_section").loadTemplate({
                         src: self.path("chapter_discuss.html"),
                         data: {
-                            comments: comments,
+                            comments: comments.reverse(),
                             chapter: self.story.chapters[e.params.cid - 1],
                             info: self.story.info
                         }
@@ -85,10 +86,14 @@ define({
             }).defaultRoute("#/info");
         },
         submit_comment :  function(){
+            var self = this;
             SERVER.post("comment_add", {
                 sid: this.options.sid,
-                chapid: 0,
-                rating: 3, review : "WOWW"
+                chapid: this.options.chapid,
+                rating: 3, review : this.$$.find(".story_comment").val()
+            }).done(function(){
+                window.location.reload();
+               // self.router.reload();
             });
         },
         _remove_: function () {

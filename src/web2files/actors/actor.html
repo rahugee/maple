@@ -3,23 +3,21 @@
         <div class="col-sm-3">
 
             <ul class="list-group">
-                <li class="list-group-item profile_image_container"><a href=""
+                <li class="list-group-item profile_image_container"><a jqr-url href="/actor/{{data.details.charid}}"
                                                                        class="center-block profile_image_link"><img
                         title="profile image" class="img-circle img-responsive"
                         src="{{ACTOR_PIC_PATH}}/pic-{{(data.details.charid % 10)*2}}.jpg"> </a>
 
-                    <h2 class="profile_name text-center">{{data.details.penname}}</h2>
+                    <h2 class="profile_name text-center">{{data.details.charname}}</h2>
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong>
-				</span>
-                    <time class="timeago" datetime="{{data.details.date}}">&nbsp;{{data.details.date}}</time>
-                </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Last
+                <li class="list-group-item text-right">{{data.details.age}} {{data.details.sex ? "Male" : "Female"}}  </li>
+                <li class="list-group-item text-right">{{data.details.status}} </li>
+                <li class="list-group-item text-right hide"><span class="pull-left"><strong>Last
                     seen</strong> </span>
-                    <time class="timeago" datetime="{{data.details.login}}">{{data.details.login}}</time>
+                    <time class="timeago"></time>
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Real
-                    name</strong> </span> {{data.details.realname || data.details.penname}}
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Full
+                    name</strong> </span> {{data.details.charname || data.details.penname}}
                 </li>
             </ul>
 
@@ -27,16 +25,16 @@
                 <li class="list-group-item text-muted panel-heading">Activity <i
                         class="fa fa-dashboard fa-1x"></i>
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong>
-				</span> 125
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Hearts</strong>
+				</span> {{data.details.hearts}}
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong>
+                <li class="list-group-item text-right hide"><span class="pull-left"><strong>Likes</strong>
 				</span> 13
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong>
+                <li class="list-group-item text-right hide"><span class="pull-left"><strong>Posts</strong>
 				</span> 37
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong>
+                <li class="list-group-item text-right hide"><span class="pull-left"><strong>Followers</strong>
 				</span> 78
                 </li>
             </ul>

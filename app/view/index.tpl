@@ -1,5 +1,6 @@
 <html>
 <head>
+    <title>{$WEBSITE_TITLE}</title>
     <meta charset="utf-8">
     <script src="{$CDN_SERVER}dist/bootloader_bundled/webmodules.bootloader.js">
         window.bootloader({

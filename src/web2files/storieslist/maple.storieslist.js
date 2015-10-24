@@ -67,9 +67,15 @@ define({
 			return self.$$.loadTemplate(
 				self.path("search_result.html"),
 				jQuery.when(self.options.stories).then(function(stories){
-					console.error(stories[0]);
+					//console.error(stories[0]);
 					return {
-						stories :stories,
+						stories :stories.filter(function(a){
+							var classes = a.classes.split(",");
+							return (self.filter.type.length==0 || classes.indexOf(self.filter.type)>-1) &&
+							(self.filter.language.length==0 || classes.indexOf(self.filter.language)>-1)
+						}).sort(function(a,b){
+							return (a[self.filter.order_by] < b[self.filter.order_by]) ? 1 : -1;
+						}),
 						langs : self.langs,
 						language : self.filter.language,
 						types : self.types,

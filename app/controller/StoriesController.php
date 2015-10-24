@@ -115,10 +115,9 @@ namespace app\controller {
         public function addComment($sid,$chapid,$review,$rating)
         {
             $this->user->validate();
-            if($this->user->isValid() && false){
+            if($this->user->isValid()){
                 $this->user->uid;
-                //echo   \app\utils\Maple::$ALLOWED_TAGS;
-                \app\model\Reviews::addComment($sid,$chapid, $this->user->uid, $this->user->uname,$review,$rating);
+                \app\model\Reviews::addComment($sid,$chapid, $this->user->uid, $this->user->getPenname(),$review,$rating);
             }
             return array("name"=>$this->user->uname, "valid"=> $this->user->isValid(), "uid"=>$this->user->uid,
                 "auth"=>$_SERVER['PHP_AUTH_USER']);
