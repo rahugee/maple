@@ -117,7 +117,7 @@ namespace app\controller {
             $this->user->validate();
             if($this->user->isValid()){
                 $this->user->uid;
-                \app\model\Reviews::addComment($sid,$chapid, $this->user->uid, $this->user->getPenname(),$review,$rating);
+                return \app\model\Reviews::addComment($sid,$chapid, $this->user->uid, $this->user->getPenname(),$review,$rating);
             }
             return array("name"=>$this->user->uname, "valid"=> $this->user->isValid(), "uid"=>$this->user->uid,
                 "auth"=>$_SERVER['PHP_AUTH_USER']);
