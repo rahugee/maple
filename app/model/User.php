@@ -125,9 +125,10 @@ namespace app\model {
         {
             global $HTTP_SERVER_VARS;
             global $PHP_SELF;
+            header('X-auth-event : true');
             if (isset($_SESSION['reauth-in-progress'])) {
                 session_destroy();
-                header("Location: http://" . $HTTP_SERVER_VARS['HTTP_HOST'] . $PHP_SELF);
+                //header("Location: http://" . $HTTP_SERVER_VARS['HTTP_HOST'] . $PHP_SELF);
             } else
                 self::basicUnAuth();
         }
