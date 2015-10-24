@@ -49,11 +49,23 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^dist/(.*) $1
 
+RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+RewriteRule ^(.*)$ - [E=BASE:%1]
+
+RewriteCond %{QUERY_STRING} ^sid=([^&]+)&chapter=([^&]+) [NC]
+RewriteRule ^(.*)/viewstory\.php$ %{ENV:BASE}story/%1/\#/chapter/%2? [R=302,NE,L]
+
+RewriteCond %{QUERY_STRING} ^sid=([^&]+) [NC]
+RewriteRule ^(.*)/viewstory\.php$ %{ENV:BASE}story/%1/? [R=302,L]
+
+#viewuser.php?uid=1235
+RewriteCond %{QUERY_STRING} ^uid=([^&]+) [NC]
+RewriteRule ^(.*)/viewuser\.php$ %{ENV:BASE}user/%1/XXX? [R=302,L]
+
 RewriteCond $1 ^(.*)\.(php|css|js|png|jpg|jpeg)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*) sms/$1
-
 
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
