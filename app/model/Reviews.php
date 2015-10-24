@@ -19,10 +19,9 @@ namespace app\model {
         public $details;
         private static $QUERY_CHAPTER_REVIEWS = "SELECT review.reviewid, review.respond, review.review, review.uid as uid,
 			review.reviewer, review.rating,
-			UNIX_TIMESTAMP(review.date) as date,
-			chapter.sid as sid, chapter.title as title, chapter.inorder as inorder
-			FROM fanfiction_reviews as review, fanfiction_chapters as chapter
-			WHERE chapter.chapid = review.chapid AND review.review != 'No Review'";
+			UNIX_TIMESTAMP(review.date) as date
+			FROM fanfiction_reviews as review
+			WHERE review.review != 'No Review'";
 
         private static $query = "SELECT review.reviewid, review.respond, review.review, review.uid as uid,
 			review.reviewer, review.rating,
@@ -56,8 +55,10 @@ namespace app\model {
         {
             $RDb = DBService::getDB();
             //$RDb->printQ = TRUE;
-            $reviews = $RDb->fetchAll(self::$QUERY_CHAPTER_REVIEWS .
-                " AND chapter.chapid = '%d' ORDER BY date asc limit " . ($page * 10) . ", 10", $chapid
+            $reviews = $RDb->fetchAll("SELECT review.reviewid, review.respond, review.review, review.uid as uid,
+			review.reviewer, review.rating,
+			UNIX_TIMESTAMP(review.date) as date
+			FROM fanfiction_reviews as review WHERE review.chapid = '%d' ORDER BY date asc limit " . ($page * 10) . ", 10", $chapid
             );
             return $reviews;
         }
