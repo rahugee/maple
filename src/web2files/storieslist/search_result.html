@@ -1,36 +1,43 @@
 <div id="demo" class="collapse in">
 	<div class="list-group list-group">
-		<div class="list-group-item order_by" style="height: 45px">
-			<div class="btn-group pull-left">
-				<select id=type style="font-size: 10px; height:25px" jqrouter-param="type"
-					rx-on-change="type_change">
-					<option value=""{{""===data.type ? "selected" : ""}}>Any Type</option>
-					<!-- for(var i in data.types){ -->
-					<option value="{{data.types[i].id}}"
-						{{data.types[i].id=== data.type ? "selected" : ""}}>
-						{{data.types[i].name}}</option>
-					<!--  } -->
-				</select> <select class=languages style="font-size: 10px; height:25px" jqrouter-param="language"
-					rx-on-change="language_change">
-					<option value=""{{""===data.language ? "selected" : ""}}>Any
+		<div class="list-group-item order_by" style="height-x: 45px">
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-4">
+					<div class="btn-group pull-left">
+						<select id=type style="font-size: 10px; height:25px" jqrouter-param="type"
+								rx-on-change="type_change">
+							<option value=""{{""===data.type ? "selected" : ""}}>Any Type</option>
+							<!-- for(var i in data.types){ -->
+							<option value="{{data.types[i].id}}"
+									{{data.types[i].id=== data.type ? "selected" : ""}}>
+							{{data.types[i].name}}</option>
+							<!--  } -->
+						</select> <select class=languages style="font-size: 10px; height:25px" jqrouter-param="language"
+										  rx-on-change="language_change">
+						<option value=""{{""===data.language ? "selected" : ""}}>Any
 						Language</option>
-					<!-- for(var i in data.langs){ -->
-					<option value="{{data.langs[i].id}}"
-						{{data.langs[i].id===data.language? "selected" : ""}}>
+						<!-- for(var i in data.langs){ -->
+						<option value="{{data.langs[i].id}}"
+								{{data.langs[i].id===data.language? "selected" : ""}}>
 						{{data.langs[i].name}}</option>
-					<!--  } -->
-				</select>
-			</div>
-			<div class="btn-group pull-right">
-				<a type="button" jqrouter-param="order_by" value="date"
-					class="btn btn-default btn-xs jqrouter">Latest</a> <a type="button"
-					 jqrouter-param="order_by" value="updated"
-					class="btn btn-default btn-xs active jqrouter"> Recently
-					Updated</a> <a type="button"  jqrouter-param="order_by" value="rating"
-					class="btn btn-default btn-xs jqrouter">Top Rated </a> <a
-					type="button"  jqrouter-param="order_by" value="commentedon"
-					class="btn btn-default btn-xs jqrouter">Recently Discussed</a>
-			</div>
+						<!--  } -->
+					</select>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-6 col-lg-8">
+					<div class="btn-group pull-right">
+						<a type="button" jqrouter-param="order_by" value="date"
+						   class="btn btn-default btn-xs jqrouter">Latest</a>
+                        <a type="button"  jqrouter-param="order_by" value="updated" class="btn btn-default btn-xs active jqrouter"> Recently
+						Updated</a> <a type="button"  jqrouter-param="order_by" value="rating"
+									   class="btn btn-default btn-xs jqrouter">Top Rated </a> <a
+							type="button"  jqrouter-param="order_by" value="commentedon"
+							class="btn btn-default btn-xs jqrouter">Recently Discussed</a>
+					</div>
+				</div>
+				</div>
+
+
 		</div>
         <div class="search_result_wrapper">
 		    <include src="storieslist.html" data={stories:data.stories} />

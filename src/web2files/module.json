@@ -25,6 +25,7 @@
   },
   "maple/style": {
     "css": [
+      "../external/bootstrap/css/bootstrap.min.css",
     "../../dist/style/library.css","../external/components/font-awesome/css/font-awesome.min.css",
     "../maple.css"
     ]

@@ -126,7 +126,6 @@ module.exports = function (grunt) {
             target: {
                 files: {
                     'dist/style/library.css': [
-                        "src/external/bootstrap/css/bootstrap.min.css",
                         "src/external/bootswatch/assets/css/bootswatch.min.css",
                         "src/external/components/spamjs-navbar/boot.navbar.css",
                         "src/external/components/normalize-css/normalize.css",
