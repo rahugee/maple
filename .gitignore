@@ -5,6 +5,8 @@
 *.com
 *.class
 *.dll
+/favicon.ico
+/favicon.png
 *.exe
 *.o
 *.pyc
