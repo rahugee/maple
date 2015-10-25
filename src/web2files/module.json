@@ -25,7 +25,8 @@
   },
   "maple/style": {
     "css": [
-      "../maple.css"
+    "../../dist/style/library.css","../external/components/font-awesome/css/font-awesome.min.css",
+    "../maple.css"
     ]
   },
   "maple/service": {

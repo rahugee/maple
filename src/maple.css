@@ -1,14 +1,197 @@
-@import "external/bootstrap/css/bootstrap.min.css";
+/*@import "external/bootstrap/css/bootstrap.min.css";
 @import "external/bootswatch/assets/css/bootswatch.min.css";
 @import "external/components/font-awesome/css/font-awesome.min.css";
 
 @import "external/components/spamjs-navbar/boot.navbar.css";
 @import "external/components/normalize-css/normalize.css";
-@import "tags/profile.css";
-@import "web2files/searchbar/searchbar.css";
-@import "web2files/story/story.css";
-
+@import "external/components/webmodules-jqtag/jqtag.css";
+*/
 body {
     min-height: 2000px;
     padding-top: 70px;
 }
+
+.profile_image_container .profile_image_link {
+    width: 160px;
+}
+
+.profile_image_container .profile_name {
+    line-height: 36px;
+    color: inherit;
+    font-family: inherit;
+    font-weight: bold;
+    margin: 0;
+    text-rendering: optimizelegibility;
+}
+
+
+.maple-details {
+    background-color: rgb(245, 245, 245);
+}
+
+
+.__template__loading__ {
+    min-width: 50px;
+    min-height: 50px;
+    position-s: relative;
+}
+
+.__template__loader__{
+    position: absolute!important;
+    left: calc(50% - 40px);
+    top: 50%;
+    margin: 20px;
+    z-index: 10000;
+}
+
+
+@-moz-keyframes __template__loader__ {
+    0% {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes __template__loader__ {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes __template__loader__ {
+    0% {
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+/* :not(:required) hides this rule from IE9 and below */
+.__template__loader__:not(:required) {
+    -moz-animation: __template__loader__ 1250ms infinite linear;
+    -webkit-animation: __template__loader__ 1250ms infinite linear;
+    animation: __template__loader__ 1250ms infinite linear;
+    border: 8px solid #38e;
+    border-right-color: transparent;
+    border-radius: 16px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 32px;
+    height: 32px;
+}
+
+
+/******  Story *******/
+.chapter-pagination-here .pagination, .comments-pagination-here .pagination {
+    margin: 0px!important;
+}
+.chapter-pagination-here .pagination a,.comments-pagination-here .pagination a{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.story-stats {
+    height: 40px; padding-bottom: 0; padding-top: 10px;
+}
+.story-stats .fa {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+}
+
+.badge.rating {
+    background-color: #f90!important;
+}
+.text-reading {
+    background-color: #fEFEFE!important;
+    line-height: 28px;
+    font-size: 15px;
+}
+
+/****************Search ******/
+
+.twitter-typeahead {
+    width: 100%
+}
+.input-group .twitter-typeahead {
+    width: 100% !important
+}
+
+.input-group .twitter-typeahead .form-control {
+    height: 28px;
+    width: 100% !important;
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0
+}
+
+.input-group .twitter-typeahead .tt-hint {
+    color: #ccc !important
+}
+.twitter-typeahead .tt-input, .twitter-typeahead .tt-hint{
+    height : 28px;
+}
+
+.maple-searchbar .tt-dropdown-menu {
+    height: auto !important;
+    max-height: 120px;
+    padding: 0;
+    margin: 0;
+    border: 0 !important;
+    position: absolute;
+    left: 0;
+    top: 38px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #FFFFFF !important;
+    width: 100%;
+    -webkit-box-shadow: 0 2px 8px -3px rgba(0, 0, 0, .9);
+    box-shadow: 0 2px 8px -3px rgba(0, 0, 0, .9)
+}
+
+.maple-searchbar .tt-dropdown-menu .tt-suggestions {
+    width: 100%
+}
+
+.maple-searchbar .tt-dropdown-menu .tt-suggestions .tt-suggestion p {
+    display: block;
+    margin: 0;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: 400;
+    line-height: 18px;
+    color: #555;
+    white-space: nowrap
+}
+
+.maple-searchbar .tt-dropdown-menu .tt-suggestions .tt-suggestion:hover,.maple-searchbar .tt-dropdown-menu .tt-suggestions .tt-suggestion.tt-cursor
+{
+    text-decoration: none;
+    background-color: #08c;
+    background-image: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0
+}
+
+.maple-searchbar .tt-dropdown-menu .tt-suggestions .tt-suggestion:hover p,.maple-searchbar .tt-dropdown-menu .tt-suggestions .tt-suggestion.tt-cursor p
+{
+    color: #fff
+}
+/*******************************************************/

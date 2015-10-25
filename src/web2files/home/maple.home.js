@@ -8,7 +8,7 @@ define({
 	home._init_ = function(){
 		var self = this;
 		
-		this.view('home.html',{}).done(function(){
+		this.$$.loadTemplate(this.path('home.html'),{}).done(function(){
 			console.error("STATBOX",STATBOX)
 
 			self.add("#stats",
