@@ -30,7 +30,7 @@ namespace app\controller {
         }
 
         /**
-         * @RequestMapping(url="",method="GET",type="template")
+         * @RequestMapping(url="",method="GET",type="template", cache=true)
          * @RequestParams(true)
          */
         public function renderTemplate($model)

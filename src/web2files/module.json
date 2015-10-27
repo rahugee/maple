@@ -21,7 +21,20 @@
       "actors/maple.actor.search.js",
       "actors/maple.actor.profile.js"
     ],
+    "html" : [
+      "webinfo/catpanal.html", "webinfo/statbox.html", "topbar/topbar.html","searchbar/searchbar.html",
+      "searchbar/searchbar.html","home/home.html","storieslist/storieslist.html","storieslist/search_result.html"
+    ],
     "on": ["maple/webmodules",  "maple/spamjs",  "maple/service" ]
+  },
+  "maple/stories/html": {
+    "html" : [
+      "story/chapter_comment.html",
+      "story/chapter_discuss.html",
+      "story/chapter_read.html",
+      "story/story.html",
+      "story/story_details.html"
+    ]
   },
   "maple/style": {
     "css": [

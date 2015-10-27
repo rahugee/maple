@@ -94,7 +94,7 @@ namespace app\controller {
         }
 
         /**
-         * @RequestMapping(url="json/user_stories",type=json)
+         * @RequestMapping(url="json/user_stories",type=json, cache=true)
          * @RequestParams(true)
          */
         public function storiesByUser($uid = null)
