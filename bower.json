@@ -29,7 +29,7 @@
     "normalize-css": "normalize.css#~3.0.3"
   },
   "resolutions": {
-    "jsutils-file": "~0.1.1",
+    "jsutils-file": "0.1.1",
     "webmodules-jqtag": "0.0.6"
   }
 }
