@@ -17,6 +17,6 @@ grunt build
 lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_SERVER; set ssl:verify-certificate no; mirror -R src/ /src"
 lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_SERVER; set ssl:verify-certificate no; mirror -R dist/ /dist"
 
-curl http://xxx.theroticstories.com//home/?RX_MODE_DEBUG=true&RX_MODE_BUILD=1
+curl $BUILD_URL?RX_MODE_DEBUG=true&RX_MODE_BUILD=1
 
 lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_SERVER; set ssl:verify-certificate no; mirror -R no/ /no"
